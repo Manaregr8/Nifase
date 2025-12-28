@@ -82,23 +82,18 @@ useEffect(() => {
         {/* Left Section */}
         <div ref={leftContentRef} className={styles.leftSection}>
           <h2 className={styles.heading}>
-            Stop losing your own money, join us and start earning!
+            Unparalleled Support<br />from Our Associates
           </h2>
-
+          <p className={styles.description}>
+            We have a team of associates dedicated 24x7 for providing you with experienced support throughout your journey.
+          </p>
+          <p className={styles.description}>
+            <b>Instant Query Resolution & Expert Assistance:</b> From solving all your queries to answering any questions related to the markets, trading, and investments, we’re there with you through thick and thin.
+          </p>
           <div className={styles.buttonGroup}>
             <button className={styles.joinButton}>
-              Join Us
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 12h14m0 0l-6-6m6 6l-6 6"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              Book Your 1:1 Consultation Now
             </button>
-            <button className={styles.trialButton}>Free trial</button>
           </div>
         </div>
 
@@ -107,17 +102,18 @@ useEffect(() => {
           <div ref={rightCardRef} className={styles.glassCard}>
             <div className={styles.cardGlow} />
             <div className={styles.cardHeader}>
-              <span className={styles.pill}>Live Payouts</span>
+              <span className={styles.pill}>NIFASE Support</span>
               <span className={styles.badgeDot} />
             </div>
-            <p className={styles.cardTitle}>
-              Traders paid out every week with{" "}
-              <span className={styles.cardAccent}>zero risk capital.</span>
-            </p>
-            <p className={styles.cardMeta}>
-              Built for active traders who want consistent growth without
-              blowing their own accounts.
-            </p>
+           <p className={styles.cardTitle}>
+  From our support team
+</p>
+<p className={styles.cardMeta}>
+  Learning markets can feel overwhelming at times — and that’s okay.  
+  Our team is always available to help you understand things clearly and
+  stay on track.
+</p>
+
           </div>
 
           {/* Text Stack */}
