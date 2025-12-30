@@ -2,12 +2,12 @@
   position: relative;
   /* min-height: 100vh; */
   width: 100%;
-  background: #000000;
+  background: hsl(var(--background));
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 0;
+  padding: clamp(3rem, 6vw, 4rem) 0;
 }
 
 .section::before {
@@ -15,29 +15,31 @@
   position: absolute;
   inset: 0;
   background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
 .container {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 80px;
-  max-width: 1400px;
+  gap: clamp(2rem, 5vw, 80px);
+  max-width: 1300px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 /* LEFT SIDE */
 .heading {
-  font-size: 44px;
+  font-size: clamp(2rem, 4.2vw, 44px);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 16px;
 }
 
 .heading span {
-     background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -45,8 +47,8 @@
 }
 
 .subheading {
-  font-size: 18px;
-  color: #15ff00;
+  font-size: clamp(1rem, 2.2vw, 18px);
+  color: hsl(var(--primary));
   margin-bottom: 32px;
 }
 
@@ -64,10 +66,10 @@
 
 .list li {
   position: relative;
-  background: linear-gradient(180deg, #0c140f, #060a07);
-  border: 1px solid rgba(47, 255, 0, 0.14);
+  background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  border: 1px solid hsl(var(--primary) / 0.14);
   border-radius: 14px;
-  padding: 22px 24px;
+  padding: clamp(16px, 2.4vw, 22px) clamp(16px, 2.6vw, 24px);
   cursor: pointer;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, margin-top 0.3s ease;
 }
@@ -76,7 +78,7 @@
   font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   font-size: 15px;
   font-weight: 600;
-  color: #eaffd8;
+  color: hsl(var(--foreground));
   letter-spacing: 0.3px;
 }
 
@@ -87,31 +89,31 @@
   top: 50%;
   transform: translateY(-50%) translateX(-6px);
   width: 280px;
-  background: linear-gradient(180deg, #0f1c14, #070c09);
-  border: 1px solid rgba(124, 255, 0, 0.25);
+  background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  border: 1px solid hsl(var(--primary) / 0.25);
   border-radius: 14px;
   padding: 18px 20px;
   font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   font-size: 13.5px;
   line-height: 1.6;
-  color: #b5b5b5;
+  color: hsl(var(--muted-foreground));
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 40px hsl(var(--background) / 0.6);
   z-index: 20;
 }
 
 /* HOVER EFFECTS - LEFT SIDE */
 .list li:hover {
-  border-color: rgba(124, 255, 0, 0.45);
-  box-shadow: 0 0 20px rgba(124, 255, 0, 0.12);
+  border-color: hsl(var(--primary) / 0.45);
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.12);
   margin-top: -6px;
   z-index: 5;
 }
 
 .list li:hover .cardTitle {
-  color: #1aff00;
+  color: hsl(var(--primary));
 }
 
 .list li:hover .preview {
@@ -126,7 +128,7 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, #11ff00, transparent);
+  background: linear-gradient(180deg, hsl(var(--primary)), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -137,10 +139,10 @@
 
 /* RIGHT SIDE */
 .right {
-  background: linear-gradient(180deg, #0d160f, #050805);
-  border: 1px solid rgba(124, 255, 0, 0.15);
+  background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  border: 1px solid hsl(var(--primary) / 0.15);
   border-radius: 18px;
-  padding: 40px;
+  padding: clamp(18px, 3.2vw, 40px);
   position: sticky;
   top: 100px;
   height: fit-content;
@@ -148,7 +150,7 @@
 
 .rightTitle {
   font-size: 22px;
-  background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -166,8 +168,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(124, 255, 0, 0.06);
-  border: 1px solid rgba(124, 255, 0, 0.2);
+  background: hsl(var(--primary) / 0.06);
+  border: 1px solid hsl(var(--primary) / 0.2);
   border-radius: 12px;
   padding: 16px 20px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -176,10 +178,10 @@
 }
 
 .companyCard:hover {
-  background: rgba(26, 255, 0, 0.353);
-  border-color: rgba(124, 255, 0, 0.5);
+  background: hsl(var(--primary) / 0.353);
+  border-color: hsl(var(--primary) / 0.5);
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(124, 255, 0, 0.25);
+  box-shadow: 0 20px 40px hsl(var(--primary) / 0.25);
 }
 
 /* SVG LOGOS ON LEFT */
@@ -195,14 +197,14 @@
 
 .companyCard:hover .svgLogo {
   transform: scale(1.3) rotate(8deg);
-  filter: drop-shadow(0 0 12px rgba(124, 255, 0, 0.9)) brightness(1.4);
+  filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.9)) brightness(1.4);
 }
 
 .companyName {
   font-size: 13px;
   line-height: 1.3;
   font-weight: 600;
-  color: #eaffd8;
+  color: hsl(var(--foreground));
   flex: 1;
 }
 
@@ -210,6 +212,7 @@
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
+    padding: 0 1.25rem;
   }
   .preview {
     display: none;
@@ -242,12 +245,18 @@
 }
 
 @media (max-width: 480px) {
-  .section {
-    padding: 80px 4%;
+  .container {
+    padding: 0 1rem;
   }
   
   .companyGrid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .companyGrid {
+    grid-template-columns: 1fr;
   }
 }

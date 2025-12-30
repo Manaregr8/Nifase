@@ -1,0 +1,603 @@
+[
+  {
+    "id": "csm-6m",
+    "slug": "certificate-in-stock-markets",
+    "title": "Certificate in Stock Markets (CSM)",
+    "category": "Job Oriented Course",
+    "level": "Certificate",
+    "duration": "6 Months",
+    "shortDescription": "A practical + theory program covering capital markets, derivatives, and technical analysis.",
+    "image": "/certificate in stock marketing.PNG",
+    "popular": true,
+    "modules": [
+      {
+        "title": "Module 1: Capital Market (Theory & Practical)",
+        "items": [
+          "Basic knowledge of the capital market (Primary Market & Secondary Market)",
+          "Major market participants",
+          "Major exchanges and indices",
+          "Legal framework and regulations",
+          "Trading and trading membership",
+          "Clearing and settlement process",
+          "Fundamental valuation concepts",
+          "Glimpse of various trading software",
+          "Practical training in market operations"
+        ]
+      },
+      {
+        "title": "Module 2: Derivatives Market & its Operations (Futures & Options)",
+        "items": [
+          "Introduction to derivatives; types of derivative contracts",
+          "Understanding of futures, forwards, options, and swaps",
+          "Futures contracts: mechanism and pricing of forward contracts",
+          "Understanding options (call & put)",
+          "Trading, clearing and settlement, risk management in derivatives",
+          "Regulatory framework",
+          "Accounting of derivatives (basics)",
+          "Practical training classes"
+        ]
+      },
+      {
+        "title": "Module 3: Technical Analysis and its Application",
+        "items": [
+          "Basic understanding of technical analysis",
+          "Fundamental vs technical analysis",
+          "Candlestick charts and pattern study (theory + practical)",
+          "Major indicators used for buy/sell decisions",
+          "Tools used for trading strategies",
+          "Dow theory and Elliott wave theory",
+          "Practical classes on technical analysis software"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "adfmm-12m",
+    "slug": "adfmm",
+    "title": "Advance Diploma in Financial Market Management (ADFMM)",
+    "category": "Job Oriented Course",
+    "level": "Advance Diploma",
+    "duration": "12 Months",
+    "shortDescription": "A comprehensive, career-focused program spanning trading, derivatives, commodities, advanced technical + fundamental analysis, and market operations.",
+    "image": "/diploma in financial marketing.PNG",
+    "popular": true,
+    "modules": [
+      {
+        "title": "Module 1: Capital Market Trading Module (Theory & Practical)",
+        "items": [
+          "Understanding financial markets",
+          "Basic knowledge of the capital market (Primary Market & Secondary Market)",
+          "Market participants",
+          "Major exchanges and indices",
+          "Trading membership",
+          "Trading mechanism",
+          "Clearing, settlement and risk management",
+          "Legal framework and regulations",
+          "Time value of money",
+          "Fundamental valuation concepts",
+          "Glimpse of various trading software",
+          "Practical training in capital market operations"
+        ]
+      },
+      {
+        "title": "Module 2: Derivatives Market & its Operations (Futures & Options)",
+        "items": [
+          "Introduction to derivatives",
+          "Understanding forwards, futures, options and swaps",
+          "Futures contract terminology",
+          "Pricing of futures; cash-and-carry model",
+          "Understanding beta; systematic and unsystematic risk",
+          "Strategies using equity futures: hedging, speculation and arbitrage",
+          "Understanding options (call/put) and options terminology",
+          "Options trading strategies",
+          "Derivative market trading mechanism",
+          "Clearing, settlement and risk management",
+          "Regulatory framework",
+          "Accounting and taxation of derivatives (basics)",
+          "Investor protection",
+          "Practical training classes"
+        ]
+      },
+      {
+        "title": "Module 3: Commodity and Currency Market Module",
+        "items": [
+          "Understanding commodity markets",
+          "Operations in commodity exchanges",
+          "Factors impacting commodity prices",
+          "Commodity market participants",
+          "Commodity futures pricing concepts",
+          "Commodity futures and options trading strategies",
+          "Commodity market trading, clearing and settlement mechanism",
+          "Commodity market regulatory framework",
+          "Introduction to currency market",
+          "Currency pairs; cross rates",
+          "Key indicators and their impact on currency market",
+          "Currency market participants",
+          "Currency futures and options terminology"
+        ]
+      },
+      {
+        "title": "Module 4: Advance Technical Analysis and its Applications",
+        "items": [
+          "Understanding technical analysis",
+          "Fundamental vs technical analysis",
+          "Types of charts",
+          "Candlestick chart patterns (theory + practical)",
+          "Major indicators used for buy/sell decisions",
+          "Support and resistance",
+          "Moving average and crossover",
+          "Trend lines and triangles",
+          "Demand and supply zones",
+          "Fibonacci and Bollinger Bands",
+          "Dow theory and Elliott wave theory",
+          "Tools used for trading strategies",
+          "Market psychology",
+          "Trading strategies based on technical analysis",
+          "Practical classes on technical analysis software"
+        ]
+      },
+      {
+        "title": "Module 5: Fundamental Analysis and its Application",
+        "items": [
+          "Introduction to fundamental analysis",
+          "Economic analysis",
+          "Industry analysis",
+          "Company analysis (qualitative/non-fundamental aspects)",
+          "Company analysis (fundamental aspects)",
+          "Ratio analysis",
+          "Stock valuation methods",
+          "Valuation of firms",
+          "Time value of money (applications)",
+          "How to select stocks for consistent returns",
+          "Financial statement analysis"
+        ]
+      },
+      {
+        "title": "Module 6: Mutual Fund",
+        "items": [
+          "Introduction to mutual funds",
+          "Concept and role of a mutual fund",
+          "Legal structure of mutual funds",
+          "Legal & regulatory framework",
+          "Offer document overview",
+          "Funds distribution and channel management practices",
+          "Pricing of units",
+          "Accounting, valuation & taxation (basics)",
+          "Investor services",
+          "Return, risk & performance of funds",
+          "Scheme selection",
+          "Selecting the right investment products for investors"
+        ]
+      },
+      {
+        "title": "Module 7: Options Trading Strategy",
+        "items": [
+          "Introduction to options and their usage",
+          "Call and put options (buying & selling)",
+          "ITM/ATM/OTM options",
+          "Options terminology",
+          "Index/stock options",
+          "American/European options",
+          "Options strategies for trading, hedging and arbitrage",
+          "Bear market options strategies",
+          "Bull market options strategies",
+          "Range-bound market options strategies",
+          "Event-based options strategies",
+          "Risk-less options trading strategies (conceptual)",
+          "Options pricing model overview",
+          "Options Greeks (Delta, Gamma, Theta, Vega, Rho)",
+          "Options trading, clearing and settlement mechanism",
+          "Options data analysis (PCR, implied volatility, open interest)",
+          "Options chain analysis"
+        ]
+      },
+      {
+        "title": "Module 8: Security Operation and Risk Management",
+        "items": [
+          "Introduction to risk management (types of risk)",
+          "Margin mechanism (stock and index)",
+          "Securities market participants",
+          "Securities broking operations",
+          "Clearing, settlement and risk management",
+          "Understanding VAR & SPAN margin mechanism",
+          "Internal & external policies regarding risk management",
+          "Basics of banking, DP, demat and KYC",
+          "Compliance management overview"
+        ]
+      },
+      {
+        "title": "Module 9: Research Analyst",
+        "items": [
+          "Introduction to research analyst role",
+          "Basics of Indian securities markets",
+          "Top-down and bottom-up approach",
+          "Equity and debt markets",
+          "Micro and macroeconomic analysis",
+          "Industry analysis",
+          "Qualitative and quantitative aspects of company analysis",
+          "Corporate actions",
+          "Stock valuation",
+          "Risk and return methodologies",
+          "Legal framework",
+          "Report writing"
+        ]
+      },
+      {
+        "title": "Module 10: Investment Advisor",
+        "items": [
+          "Objectives of investment decisions",
+          "Types of financial markets",
+          "Investment avenues",
+          "Time value of money",
+          "Debt management",
+          "Mutual funds",
+          "Regulatory framework",
+          "Fixed-income securities and valuation (concepts)",
+          "Capital market efficiency",
+          "Modern portfolio theory",
+          "Financial analysis and valuation",
+          "Ethical issues",
+          "Grievance redress system",
+          "Valuation of derivatives",
+          "Portfolio management"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dfmm-6m",
+    "slug": "dfmm",
+    "title": "Diploma in Financial Market Management (DFMM)",
+    "category": "Job Oriented Course",
+    "level": "Diploma",
+    "duration": "6 Months",
+    "shortDescription": "A diploma program focused on capital market trading, derivatives, commodity/currency markets, advanced technical analysis, and fundamental analysis.",
+    "image": "/diploma in financial marketing.PNG",
+    "popular": true,
+    "modules": [
+      {
+        "title": "Module 1: Capital Market Trading Module (Theory & Practical)",
+        "items": [
+          "Understanding financial markets",
+          "Basic knowledge of the capital market (Primary Market & Secondary Market)",
+          "Market participants",
+          "Major exchanges and indices",
+          "Trading membership",
+          "Trading mechanism",
+          "Clearing, settlement and risk management",
+          "Legal framework and regulations",
+          "Time value of money",
+          "Fundamental valuation concepts",
+          "Glimpse of various trading software",
+          "Practical training in capital market operations"
+        ]
+      },
+      {
+        "title": "Module 2: Derivatives Market & its Operations (Futures & Options)",
+        "items": [
+          "Introduction to derivatives",
+          "Understanding forwards, futures, options and swaps",
+          "Futures contract terminology",
+          "Pricing of futures; cash-and-carry model",
+          "Understanding beta; systematic and unsystematic risk",
+          "Strategies using equity futures: hedging, speculation and arbitrage",
+          "Understanding options (call/put) and options terminology",
+          "Options trading strategies",
+          "Derivative market trading mechanism",
+          "Clearing, settlement and risk management",
+          "Regulatory framework",
+          "Accounting and taxation of derivatives (basics)",
+          "Investor protection",
+          "Practical training classes"
+        ]
+      },
+      {
+        "title": "Module 3: Commodity and Currency Market Module",
+        "items": [
+          "Understanding commodity markets",
+          "Operations in commodity exchanges",
+          "Factors impacting commodity prices",
+          "Commodity market participants",
+          "Commodity futures pricing concept",
+          "Commodity futures and options trading strategies",
+          "Commodity market trading, clearing and settlement mechanism",
+          "Commodity market regulatory framework",
+          "Introduction to currency market",
+          "Currency pairs; cross rates",
+          "Key indicators and their impact on currency market",
+          "Currency market participants",
+          "Currency futures and options terminology"
+        ]
+      },
+      {
+        "title": "Module 4: Advance Technical Analysis and its Applications",
+        "items": [
+          "Understanding technical analysis",
+          "Fundamental vs technical analysis",
+          "Types of charts",
+          "Candlestick chart patterns (theory + practical)",
+          "Major indicators used for buy/sell decisions",
+          "Support and resistance",
+          "Moving average and crossover",
+          "Trend lines and triangles",
+          "Demand and supply zones",
+          "Fibonacci and Bollinger Bands",
+          "Dow theory and Elliott wave theory",
+          "Tools used for trading strategies",
+          "Market psychology",
+          "Trading strategies based on technical analysis",
+          "Practical classes on technical analysis software"
+        ]
+      },
+      {
+        "title": "Module 5: Fundamental Analysis and its Application",
+        "items": [
+          "Introduction to fundamental analysis",
+          "Economic analysis",
+          "Industry analysis",
+          "Company analysis (qualitative/non-fundamental aspects)",
+          "Company analysis (fundamental aspects)",
+          "Ratio analysis",
+          "Stock valuation methods",
+          "Valuation of firms",
+          "Understanding time value of money",
+          "How to select stocks for consistent returns",
+          "Financial statement analysis"
+        ]
+      },
+      {
+        "title": "Module 6: Mutual Fund",
+        "items": [
+          "Introduction to mutual funds",
+          "Concept and role of a mutual fund",
+          "Legal structure of mutual funds",
+          "Legal & regulatory framework",
+          "Offer document overview",
+          "Funds distribution and channel management practices",
+          "Pricing of units",
+          "Accounting, valuation & taxation (basics)",
+          "Investor services",
+          "Return, risk & performance of funds",
+          "Scheme selection",
+          "Selecting the right investment products for investors"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "erc-3m",
+    "slug": "equity-research-certification",
+    "title": "Equity Research Certification",
+    "category": "Job Oriented Course",
+    "level": "Certificate",
+    "duration": "3 Months",
+    "shortDescription": "A focused program to build strong fundamentals in equity research, valuation, reporting, and analytical tools.",
+    "image": "/diploma in research analysis.PNG",
+    "popular": true,
+    "modules": [
+      {
+        "title": "Module 1: Understanding Financial Jargons",
+        "items": [
+          "Overview of NSE, BSE, MCX etc.",
+          "Understanding income statements",
+          "Balance sheet analysis",
+          "Cashflow analysis",
+          "Brief on various software tools",
+          "How capital markets work worldwide",
+          "Fundamental vs technical analysis",
+          "Top-down and bottom-up approach"
+        ]
+      },
+      {
+        "title": "Module 2: Industry & Company Analysis",
+        "items": [
+          "Macro & micro aspects in relation to stock markets",
+          "Markets affected by IIP, inflation, PMI, monetary policy etc.",
+          "Regression analysis and ANOVA distribution (intro)",
+          "Correlation & covariance analysis",
+          "Financial terminology: buyback, bonus, corporate actions etc."
+        ]
+      },
+      {
+        "title": "Module 3: Analyst Tools & Usage",
+        "items": [
+          "Quarterly results analysis",
+          "Annual reports analysis",
+          "Management discussion",
+          "Directors reports",
+          "How to read company annual report & DRHP",
+          "NPV & IRR rules",
+          "HPR & HPY",
+          "Statistical concepts & market returns",
+          "Demand supply & elasticity concepts",
+          "Comparative analysis",
+          "IPO analysis"
+        ]
+      },
+      {
+        "title": "Module 4: Stock Analysis Techniques",
+        "items": [
+          "Stock portfolio model",
+          "Descriptive statistics models",
+          "Understanding standard deviation & variance",
+          "Understanding CAL, SML & CML equations",
+          "Markowitz modern portfolio model",
+          "Skewness, kurtosis & range",
+          "Net asset value analysis",
+          "CANSLIM model by William J. O'Neil",
+          "Relative & comps techniques",
+          "Dividend discount model"
+        ]
+      },
+      {
+        "title": "Module 5: Decoding Ratios",
+        "items": [
+          "Ratio analysis (ICR, debt-equity, PAT margin, debtors etc.)",
+          "Step-wise DuPont analysis",
+          "Sharpe & Treynor ratio; alpha & beta analysis",
+          "PE, EPS, ROI, ROA analysis",
+          "Capital budgeting & cost of capital",
+          "Capital asset pricing model (CAPM)",
+          "Weak-form, semi-strong, and strong-form market efficiency"
+        ]
+      },
+      {
+        "title": "Module 6: Stock Market Basics & Buy Side / Sell Side",
+        "items": [
+          "Company analysis – qualitative dimensions",
+          "Company analysis – quantitative dimensions",
+          "Banking sector terminology",
+          "Mutual fund analysis",
+          "Basic use of Excel & techniques",
+          "Qualities of a good research report"
+        ]
+      },
+      {
+        "title": "Module 7: Discounted Cash Flow (DCF) Approach",
+        "items": [
+          "Time value of money",
+          "Forecasting techniques",
+          "Revenue builders",
+          "Build asset and depreciation schedule",
+          "Build P&L and balance sheet",
+          "Build assumptions & debt schedule",
+          "Understanding FCFF and FCFI",
+          "Build CapEx schedule",
+          "Decode Ke, Kd, Kp with WACC",
+          "CAPM and its understanding",
+          "EV/EBITDA and SOTP (overview)"
+        ]
+      },
+      {
+        "title": "Module 8: Derivatives & Fixed Income",
+        "items": [
+          "Understanding concepts",
+          "Understanding calculators",
+          "Basics of derivatives",
+          "Forwards & futures",
+          "Put-call parity",
+          "Basic hedging strategies for analysts"
+        ]
+      },
+      {
+        "title": "Module 9: Other Important Concepts",
+        "items": [
+          "Live & desk cases on companies",
+          "Knowledge sessions on undervalued & overvalued stocks",
+          "Understanding analyst presentations",
+          "Review current macro & micro trends",
+          "Review global trends (Eurozone crisis, oil crisis, etc.)",
+          "Mid-term and end-term examination"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "edc-8w",
+    "slug": "equity-dealer-certification",
+    "title": "Equity Dealer Certification",
+    "category": "Job Oriented Course",
+    "level": "Short-Term Certification",
+    "duration": "6–8 Weeks",
+    "shortDescription": "A short-term program designed to build practical understanding of equity markets, dealing process, technical + fundamental basics, and trading discipline.",
+    "image": "/certificate in stock marketing.PNG",
+    "popular": true,
+    "modules": [
+      {
+        "title": "Module 1: Introduction to Indian Financial Markets",
+        "items": [
+          "Overview of Indian capital markets",
+          "Role of stock exchanges",
+          "Market participants (investors, traders, dealers, institutions)",
+          "Primary vs secondary market"
+        ]
+      },
+      {
+        "title": "Module 2: Equity Market Basics",
+        "items": [
+          "What is equity & shareholding",
+          "Types of equity instruments",
+          "Face value, market price, valuation basics",
+          "Corporate actions (bonus, split, dividend)"
+        ]
+      },
+      {
+        "title": "Module 3: Stock Exchange Operations",
+        "items": [
+          "How NSE & BSE work",
+          "Trading sessions & market timings",
+          "Order types (Market, Limit, SL, SL-M)",
+          "Circuit limits & market volatility"
+        ]
+      },
+      {
+        "title": "Module 4: Trading & Dealing Process",
+        "items": [
+          "Role of an equity dealer",
+          "Trade execution process",
+          "Understanding order book & market depth",
+          "Client order handling (conceptual)",
+          "Settlement cycle (T+1 / T+2 – as applicable)"
+        ]
+      },
+      {
+        "title": "Module 5: Technical Analysis – Foundations",
+        "items": [
+          "Price action basics",
+          "Candlestick patterns",
+          "Support & resistance",
+          "Trend identification",
+          "Introduction to indicators (MA, RSI, MACD – basic use)"
+        ]
+      },
+      {
+        "title": "Module 6: Fundamental Analysis – Basics",
+        "items": [
+          "Company financial statements (overview)",
+          "Key ratios (EPS, P/E, ROE – concept level)",
+          "Sector & industry overview",
+          "Long-term vs short-term perspective"
+        ]
+      },
+      {
+        "title": "Module 7: Risk Management & Trading Discipline",
+        "items": [
+          "Risk vs reward concept",
+          "Position sizing basics",
+          "Capital protection mindset",
+          "Common mistakes by beginners",
+          "Trading psychology fundamentals"
+        ]
+      },
+      {
+        "title": "Module 8: Market Regulations & Ethics",
+        "items": [
+          "Regulatory framework (overview)",
+          "Do’s & don’ts in equity trading",
+          "Ethical practices in markets",
+          "Understanding compliance importance"
+        ]
+      },
+      {
+        "title": "Module 9: Live Market Exposure (Practical)",
+        "items": [
+          "Reading live market charts",
+          "Understanding price movement",
+          "Observing volume & volatility",
+          "Paper trading / simulation approach",
+          "Trade review & analysis",
+          "No profit guarantees — observation & learning"
+        ]
+      },
+      {
+        "title": "Module 10: Career Path & Next Steps",
+        "items": [
+          "Career options after equity market learning",
+          "Dealer, trader, analyst (overview)",
+          "Skill roadmap for further growth",
+          "Introduction to advanced market segments"
+        ]
+      }
+    ]
+  }
+]

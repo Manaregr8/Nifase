@@ -3,7 +3,7 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #000000;
+  background: hsl(var(--background));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -61,13 +61,13 @@
   line-height: 1;
   padding: 0 3rem;
   flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.15);
+  color: hsl(var(--foreground) / 0.15);
   text-transform: uppercase;
 }
 
 /* Green-ish gradient highlight */
 .highlight {
-  background: linear-gradient(135deg, #22c55e, #a3e635, #4ade80);
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -82,7 +82,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
   opacity: 0.5;
 }
 
@@ -94,12 +94,12 @@
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 10;
-  background: rgba(10, 10, 10, 0.8);
+  background: hsl(var(--background) / 0.8);
   backdrop-filter: blur(20px);
   padding: 4rem 3rem;
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid hsl(var(--border) / 0.6);
+  box-shadow: 0 20px 60px hsl(var(--background) / 0.55);
   max-width: 640px;
   width: 100%;
 }
@@ -107,14 +107,14 @@
 .mainTitle {
   font-size: 4rem;
   font-weight: 700;
-  color: #ffffff;
+  color: hsl(var(--foreground));
   margin: 0 0 1.5rem 0;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -125,7 +125,7 @@
 
 .subtitle {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: hsl(var(--foreground) / 0.7);
   margin: 0;
   font-weight: 400;
 }
@@ -133,8 +133,8 @@
 /* Hover Effects */
 .centerContent:hover {
   transform: translate(-50%, -50%) scale(1.02);
-  border-color: rgba(34, 197, 94, 0.4);
-  box-shadow: 0 25px 70px rgba(34, 197, 94, 0.25);
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 25px 70px hsl(var(--primary) / 0.25);
   transition: all 0.3s ease;
 }
 
@@ -144,7 +144,7 @@
   position: relative;
   width: 100%;
   padding: 6rem 3rem 4.5rem;
-  color: #ffffff;
+  color: hsl(var(--foreground));
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -155,8 +155,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15, 23, 42, 0.6) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.6) 1px, transparent 1px);
+    linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
   background-size: 80px 80px;
   opacity: 0.22;
   pointer-events: none;
@@ -197,7 +197,7 @@
   bottom: -4rem;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.45), transparent 45%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.45), transparent 45%);
   filter: blur(20px);
   opacity: 0.9;
   pointer-events: none;
@@ -212,16 +212,16 @@
   line-height: 1.08;
   letter-spacing: -0.05em;
   font-weight: 900;
-  color: rgba(248, 250, 252, 0.96);
+  color: hsl(var(--foreground) / 0.96);
 }
 
 .fxEmphasis {
   display: inline-block;
-  background: linear-gradient(135deg, #22c55e, #a3e635);
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 28px rgba(190, 242, 100, 0.55);
+  text-shadow: 0 0 28px hsl(var(--accent) / 0.55);
 }
 
 /* Right: glass panel card */
@@ -233,12 +233,12 @@
   border-radius: 1.5rem;
   padding: 1.8rem 1.7rem 1.5rem;
   background:
-    radial-gradient(circle at top left, rgba(34, 197, 94, 0.22), transparent 55%),
-    rgba(15, 23, 42, 0.94);
-  border: 1px solid rgba(148, 163, 184, 0.55);
+    radial-gradient(circle at top left, hsl(var(--primary) / 0.22), transparent 55%),
+    hsl(var(--card) / 0.92);
+  border: 1px solid hsl(var(--border) / 0.6);
   box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(34, 197, 94, 0.35);
+    0 24px 80px hsl(var(--background) / 0.9),
+    0 0 40px hsl(var(--primary) / 0.35);
   backdrop-filter: blur(22px);
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -246,17 +246,17 @@
 
 .fxRight:hover {
   transform: translateY(-4px);
-  border-color: rgba(190, 242, 100, 0.95);
+  border-color: hsl(var(--accent) / 0.95);
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 1),
-    0 0 55px rgba(34, 197, 94, 0.7);
+    0 30px 90px hsl(var(--background) / 1),
+    0 0 55px hsl(var(--primary) / 0.7);
 }
 
 .fxRight::before {
   content: "";
   position: absolute;
   inset: -40%;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.26), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.26), transparent 70%);
   filter: blur(26px);
   opacity: 0.8;
   z-index: -1;
@@ -270,7 +270,7 @@
   right: 14%;
   top: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
   opacity: 0.8;
 }
 
@@ -282,9 +282,9 @@
   justify-content: center;
   padding: 0.45rem 1.3rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  background: rgba(15, 23, 42, 0.8);
-  color: rgba(248, 250, 252, 0.9);
+  border: 1px solid hsl(var(--border) / 0.5);
+  background: hsl(var(--card) / 0.75);
+  color: hsl(var(--foreground) / 0.9);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -294,9 +294,9 @@
 }
 
 .fxPillBtn:hover {
-  border-color: rgba(190, 242, 100, 0.9);
-  box-shadow: 0 0 26px rgba(163, 230, 53, 0.45);
-  background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.35), rgba(15, 23, 42, 0.9));
+  border-color: hsl(var(--accent) / 0.9);
+  box-shadow: 0 0 26px hsl(var(--accent) / 0.45);
+  background: radial-gradient(circle at 0 0, hsl(var(--primary) / 0.35), hsl(var(--card) / 0.85));
 }
 
 /* right titles & text */
@@ -306,24 +306,24 @@
   line-height: 1.4;
   font-weight: 500;
   margin-bottom: 1.2rem;
-  color: rgba(248, 250, 252, 0.96);
+  color: hsl(var(--foreground) / 0.96);
 }
 
 .fxAccent {
-  color: #bef264;
+  color: hsl(var(--accent));
 }
 
 .fxRightText {
   font-size: 0.9rem;
   line-height: 1.75;
-  color: rgba(209, 213, 219, 0.95);
+  color: hsl(var(--muted-foreground));
   margin-bottom: 0.9rem;
 }
 
 .fxRightTextMuted {
   font-size: 0.82rem;
   line-height: 1.7;
-  color: rgba(148, 163, 184, 0.95);
+  color: hsl(var(--muted-foreground) / 0.85);
 }
 
 /* ---------- Animations ---------- */

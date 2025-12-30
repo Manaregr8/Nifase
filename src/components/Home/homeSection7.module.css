@@ -1,8 +1,8 @@
 .section {
   position: relative;
   width: 100%;
-  background: radial-gradient(circle at top, #020617, #000000 70%);
-  color: #f9fafb;
+  background: radial-gradient(circle at top, hsl(var(--card)), hsl(var(--background)) 70%);
+  color: hsl(var(--foreground));
   padding: 5rem 1.75rem 6rem;
   overflow: hidden;
 }
@@ -11,8 +11,8 @@
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
 }
@@ -24,7 +24,7 @@
   transform: translate(-50%, -50%);
   width: 720px;
   height: 720px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
   filter: blur(26px);
   opacity: 0.85;
   pointer-events: none;
@@ -34,8 +34,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15, 23, 42, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.5) 1px, transparent 1px);
+    linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
   background-size: 90px 90px;
   opacity: 0.25;
   pointer-events: none;
@@ -62,7 +62,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.9);
+  color: hsl(var(--muted-foreground));
   margin-bottom: 0.9rem;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .headingAccent {
-  background: linear-gradient(120deg, #22c55e, #a3e635);
+  background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -84,7 +84,7 @@
 .sub {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: rgba(209, 213, 219, 0.9);
+  color: hsl(var(--muted-foreground));
 }
 
 /* right accordion */
@@ -92,11 +92,11 @@
 .right {
   position: relative;
   border-radius: 1.4rem;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: hsl(var(--card) / 0.9);
+  border: 1px solid hsl(var(--primary) / 0.35);
   box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.9),
-    0 0 32px rgba(34, 197, 94, 0.25);
+    0 24px 70px hsl(var(--background) / 0.9),
+    0 0 32px hsl(var(--primary) / 0.25);
   backdrop-filter: blur(18px);
   padding: 1.2rem;
 }
@@ -113,8 +113,8 @@
 }
 
 .itemOpen {
-  background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.15), transparent 70%);
-  box-shadow: 0 0 24px rgba(34, 197, 94, 0.25);
+  background: radial-gradient(circle at 0 0, hsl(var(--primary) / 0.15), transparent 70%);
+  box-shadow: 0 0 24px hsl(var(--primary) / 0.25);
 }
 
 .header {
@@ -133,7 +133,7 @@
   text-align: left;
   font-size: 0.98rem;
   font-weight: 500;
-  color: rgba(243, 244, 246, 0.96);
+  color: hsl(var(--foreground) / 0.96);
 }
 
 /* icon */
@@ -143,7 +143,7 @@
   height: 26px;
   min-width: 26px;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
+  border: 1px solid hsl(var(--border) / 0.8);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -156,7 +156,7 @@
   width: 10px;
   height: 2px;
   border-radius: 999px;
-  background: #e5f9e9;
+  background: hsl(var(--foreground));
   position: relative;
 }
 
@@ -166,7 +166,7 @@
   width: 2px;
   height: 10px;
   border-radius: 999px;
-  background: #e5f9e9;
+  background: hsl(var(--foreground));
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -174,9 +174,9 @@
 }
 
 .iconOpen {
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
-  border-color: rgba(34, 197, 94, 0.9);
-  box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
+  border-color: hsl(var(--primary) / 0.9);
+  box-shadow: 0 0 18px hsl(var(--primary) / 0.8);
   transform: rotate(180deg);
 }
 
@@ -199,7 +199,7 @@
 .bodyInner p {
   font-size: 0.9rem;
   line-height: 1.7;
-  color: rgba(148, 163, 184, 0.96);
+  color: hsl(var(--muted-foreground));
 }
 
 /* responsive */

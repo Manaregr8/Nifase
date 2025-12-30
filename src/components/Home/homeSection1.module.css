@@ -4,7 +4,7 @@
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background: #000000;
+    background: hsl(var(--background));
     display: flex;
     flex-direction: column;
 }
@@ -14,8 +14,8 @@
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 1;
@@ -41,7 +41,7 @@
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 50%, transparent 70%);
+    background: radial-gradient(circle, hsl(var(--primary) / 0.20) 0%, hsl(var(--primary) / 0.05) 50%, transparent 70%);
     filter: blur(80px);
     pointer-events: none;
     z-index: 1;
@@ -53,9 +53,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(34, 197, 94, 0.3);
-    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid hsl(var(--border));
+    border-bottom: 1px solid hsl(var(--primary) / 0.30);
+    background: hsl(var(--background) / 0.80);
     backdrop-filter: blur(10px);
     padding: 1rem 0;
     width: 100%;
@@ -71,7 +71,6 @@
 .tickerTrack {
     display: flex;
     width: max-content;
-    animation: tickerMove 40s linear infinite;
 }
 
 .tickerButton {
@@ -82,19 +81,10 @@
     border-radius: 999px;
     font-size: 0.875rem;
     font-weight: 500;
-    background: rgba(34, 197, 94, 0.1);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    color: #22c55e;
+    background: hsl(var(--primary) / 0.10);
+    border: 1px solid hsl(var(--primary) / 0.30);
+    color: hsl(var(--primary));
     white-space: nowrap;
-}
-
-@keyframes tickerMove {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
 }
 
 /* Hero Wrapper */
@@ -106,8 +96,23 @@
     align-items: center;
     justify-content: center;
     min-height: 90vh;
-    padding: 5rem 1rem 0rem;
+    padding: 5rem 1rem 0;
     width: 100%;
+}
+
+@media (min-width: 640px) {
+    .heroWrapper {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .heroWrapper {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 5rem;
+    }
 }
 
 /* Hero Content */
@@ -128,8 +133,8 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid hsl(var(--primary) / 0.30);
+    background: hsl(var(--primary) / 0.10);
     backdrop-filter: blur(10px);
     /* margin-bottom: 2rem; */
 }
@@ -138,25 +143,25 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: #22c55e;
+    background: hsl(var(--primary));
     animation: livePulse 2s ease-in-out infinite;
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.8);
 }
 
 .badgeText {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #22c55e;
+    color: hsl(var(--primary));
 }
 
 @keyframes livePulse {
     0%, 100% {
         opacity: 1;
-        box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+        box-shadow: 0 0 10px hsl(var(--primary) / 0.8);
     }
     50% {
         opacity: 0.5;
-        box-shadow: 0 0 20px rgba(34, 197, 94, 1);
+        box-shadow: 0 0 20px hsl(var(--primary) / 1);
     }
 }
 
@@ -167,12 +172,12 @@
     font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
     letter-spacing: -0.02em;
     line-height: 1.1;
-    color: #ffffff;
+    color: hsl(var(--foreground));
     /* margin-bottom: 1.5rem; */
 }
 
 .gradientText {
-    background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+    background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -182,7 +187,7 @@
 .subheadline {
     font-size: clamp(1.25rem, 3vw, 1.5rem);
     font-weight: 600;
-    background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+    background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -193,7 +198,7 @@
 .description {
     font-size: 1.125rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     max-width: 42rem;
     /* margin-bottom: 2rem; */
 }
@@ -205,7 +210,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 0.9rem;
 }
 
 @media (min-width: 640px) {
@@ -223,19 +228,19 @@
     border-radius: 999px;
     font-size: 1.125rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
 
-    color: #000000;
+    color: hsl(var(--primary-foreground));
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+    box-shadow: 0 8px 24px hsl(var(--primary) / 0.4);
 }
 
 .ctaButtonPrimary:hover {
-    background: linear-gradient(135deg, #179e4b 0%, #659617 50%, #066d2a 100%);
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
 
     transform: scale(1.05);
-    box-shadow: 0 12px 32px rgba(34, 197, 94, 0.6);
+    box-shadow: 0 12px 32px hsl(var(--primary) / 0.6);
 }
 
 .ctaButtonSecondary {
@@ -246,22 +251,23 @@
     border-radius: 999px;
     font-size: 1.125rem;
     font-weight: 500;
-    background: black;
-    color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: hsl(var(--background));
+    color: hsl(var(--foreground) / 0.9);
+    border: 1px solid hsl(var(--border) / 0.7);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .ctaButtonSecondary:hover {
-    border-color: rgba(34, 197, 94, 0.5);
-    background: rgba(34, 197, 94, 0.05);
+    border-color: hsl(var(--primary) / 0.5);
+    background: hsl(var(--primary) / 0.05);
 }
 
 .ctaIcon {
     width: 1.25rem;
     height: 1.25rem;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .ctaButtonPrimary:hover .ctaIcon {
@@ -275,7 +281,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
 }
 
 .statItem {
@@ -287,7 +293,7 @@
 .statIcon {
     padding: 0.5rem;
     border-radius: 0.5rem;
-    background: rgba(34, 197, 94, 0.1);
+    background: hsl(var(--primary) / 0.10);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -296,7 +302,7 @@
 .statIconSvg {
     width: 1.25rem;
     height: 1.25rem;
-    color: #22c55e;
+    color: hsl(var(--primary));
 }
 
 .statContent {
@@ -306,14 +312,14 @@
 .statNumber {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(var(--foreground));
     margin: 0;
     line-height: 1.2;
 }
 
 .statLabel {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     margin: 0;
 }
 
@@ -325,20 +331,25 @@
     }
 
     .stats {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
     }
 
     .statItem {
-        width: 100%;
+        flex: 0 0 calc(50% - 0.75rem);
         justify-content: center;
     }
 
-    .ctaButtonPrimary,
-    .ctaButtonSecondary {
+    .statItem:last-child {
+        flex-basis: 100%;
+        justify-content: center;
+    }
+
+    .ctaWrapper :global(.btn) {
         width: 100%;
-        padding: 1.25rem 1.5rem;
-        font-size: 1rem;
+        min-height: 3.25rem;
     }
 }
 

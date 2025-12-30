@@ -2,7 +2,10 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./homeSection7.module.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqItems = [
   {
@@ -34,22 +37,41 @@ const HomeSection7 = () => {
     const section = sectionRef.current;
     const items = itemsRef.current;
 
+    if (!section) return;
+
+    let mm;
     const ctx = gsap.context(() => {
-      gsap.from(items, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
+      mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
         },
-        y: 40,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.7,
-        ease: "power3.out",
-      });
+        (context) => {
+          const { isMobile } = context.conditions;
+
+          gsap.from(items, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: isMobile ? 22 : 40,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: "power3.out",
+          });
+        }
+      );
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      mm?.revert();
+      ctx.revert();
+    };
   }, []);
 
   // Height animation for accordion

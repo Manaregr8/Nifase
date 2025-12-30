@@ -1,13 +1,8 @@
-/* .section {
-  background: radial-gradient(circle at top, #0f1a14, #000);
-  padding: 100px 6%;
-  color: #e6e6e6;
-} */
 .section {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #000000;
+  background: hsl(var(--background));
   overflow: hidden;
   padding: 5px 6%;
 }
@@ -17,8 +12,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -44,11 +39,11 @@
 }
 
 .heading span {
-  color: #7cff00;
+  color: hsl(var(--primary));
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #7cff00, #9dff3a);
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -65,7 +60,7 @@
   );
   font-size: 15px;
   line-height: 1.7;
-  color: #b5b5b5;
+  color: hsl(var(--muted-foreground));
   margin: 0 auto;
 }
 
@@ -80,8 +75,8 @@
 /* CARD */
 
 .card {
-  background: linear-gradient(180deg, #0c140f, #060a07);
-  border: 1px solid rgba(124, 255, 0, 0.15);
+  background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  border: 1px solid hsl(var(--primary) / 0.15);
   border-radius: 18px;
   padding: 28px 30px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease,
@@ -89,8 +84,8 @@
 }
 
 .card:hover {
-  border-color: rgba(124, 255, 0, 0.4);
-  box-shadow: 0 0 28px rgba(124, 255, 0, 0.12);
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 0 28px hsl(var(--primary) / 0.12);
   transform: translateY(-4px);
 }
 
@@ -99,7 +94,7 @@
 .quoteIcon {
   width: 32px;
   height: 32px;
-  color: rgba(124, 255, 0, 0.45);
+  color: hsl(var(--primary) / 0.45);
   margin-bottom: 14px;
 }
 
@@ -113,7 +108,7 @@
   );
   font-size: 15px;
   line-height: 1.7;
-  color: #d6d6d6;
+  color: hsl(var(--foreground) / 0.85);
   margin-bottom: 22px;
 }
 
@@ -129,28 +124,28 @@
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  background: radial-gradient(circle at 0 0, #7cff00, #1a2b1f);
+  background: radial-gradient(circle at 0 0, hsl(var(--primary)), hsl(var(--card)));
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 16px rgba(124, 255, 0, 0.3);
+  box-shadow: 0 0 16px hsl(var(--primary) / 0.3);
 }
 
 .avatarInitial {
   font-size: 16px;
   font-weight: 700;
-  color: #020814;
+  color: hsl(var(--background));
 }
 
 .authorName {
   font-size: 14px;
   font-weight: 600;
-  color: #eaffd8;
+  color: hsl(var(--foreground));
 }
 
 .authorRole {
   font-size: 13px;
-  color: #9da39f;
+  color: hsl(var(--muted-foreground));
 }
 
 /* soft glow behind cards */
@@ -160,7 +155,7 @@
   right: -80px;
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, rgba(124, 255, 0, 0.2), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.2), transparent 70%);
   filter: blur(40px);
   opacity: 0.8;
   pointer-events: none;

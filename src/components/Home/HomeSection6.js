@@ -19,53 +19,78 @@ const HomeSection6 = () => {
     const card = cardRef.current;
     const caption = captionRef.current;
 
+    if (!section || !line || !card || !caption) return;
+
+    let mm;
     const ctx = gsap.context(() => {
-      // ScrollTrigger: line scale + slight tracking change
-      gsap.fromTo(
-        line,
-        { opacity: 0, y: 40, letterSpacing: "-0.08em" },
-        {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "center center",
-            scrub: 1,
-          },
-          opacity: 1,
-          y: 0,
-          letterSpacing: "-0.03em",
-        }
-      );
+      mm = gsap.matchMedia();
 
-      // Card: depth, rotation, blur
-      gsap.fromTo(
-        card,
-        { y: 120, scale: 0.85, rotateZ: -8, opacity: 0, filter: "blur(8px)" },
+      mm.add(
         {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            end: "center center",
-            scrub: 1.2,
-          },
-          y: 0,
-          scale: 1,
-          rotateZ: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-        }
-      );
-
-      gsap.from(caption, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          end: "center center",
-          scrub: 1,
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
         },
-        y: 40,
-        opacity: 0,
-      });
+        (context) => {
+          const { isMobile } = context.conditions;
+          const lineY = isMobile ? 22 : 40;
+          const cardY = isMobile ? 70 : 120;
+          const captionY = isMobile ? 18 : 40;
+
+          // Heading line (play once)
+          gsap.fromTo(
+            line,
+            { opacity: 0, y: lineY, letterSpacing: "-0.08em" },
+            {
+              scrollTrigger: {
+                trigger: section,
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              opacity: 1,
+              y: 0,
+              letterSpacing: "-0.03em",
+              duration: 0.9,
+              ease: "power2.out",
+            }
+          );
+
+          // Card (play once)
+          gsap.fromTo(
+            card,
+            { y: cardY, scale: 0.9, rotateZ: -6, opacity: 0, filter: "blur(8px)" },
+            {
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              y: 0,
+              scale: 1,
+              rotateZ: 0,
+              opacity: 1,
+              filter: "blur(0px)",
+              duration: 1.05,
+              ease: "power2.out",
+            }
+          );
+
+          // Caption (play once)
+          gsap.from(caption, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 75%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: captionY,
+            opacity: 0,
+            duration: 0.85,
+            ease: "power2.out",
+          });
+        }
+      );
     }, section);
 
     // Mouse‑move parallax for card
@@ -87,11 +112,20 @@ const HomeSection6 = () => {
       });
     };
 
-    section.addEventListener("pointermove", handleMove);
+    const canParallax = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+    if (canParallax) {
+      section.addEventListener("pointermove", handleMove);
+    }
 
     return () => {
+      mm?.revert();
       ctx.revert();
-      section.removeEventListener("pointermove", handleMove);
+      if (canParallax) {
+        section.removeEventListener("pointermove", handleMove);
+      }
     };
   }, []);
 
@@ -124,7 +158,7 @@ const HomeSection6 = () => {
               </p>
               <div className={styles.certAmountRow}>
                 <span className={styles.label}>Amount</span>
-                <span className={styles.amount}>$5,400.00</span>
+                <span className={styles.amount}>₹ 5,400.00</span>
               </div>
               <div className={styles.certMetaRow}>
                 <div>

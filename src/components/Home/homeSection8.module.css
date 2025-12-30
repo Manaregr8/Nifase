@@ -2,7 +2,7 @@
 .section {
     position: relative;
     padding: 6rem 0;
-    background: #000000;
+    background: hsl(var(--background));
     overflow: hidden;
 }
 
@@ -11,8 +11,8 @@
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+        linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
 }
@@ -25,7 +25,7 @@
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%);
     filter: blur(120px);
     pointer-events: none;
 }
@@ -69,8 +69,8 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid hsl(var(--primary) / 0.3);
+    background: hsl(var(--primary) / 0.1);
     backdrop-filter: blur(10px);
     margin-bottom: 1.5rem;
 }
@@ -79,21 +79,21 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: #22c55e;
+    background: hsl(var(--primary));
     animation: livePulse 2s ease-in-out infinite;
 }
 
 .badgeText {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #22c55e;
+    color: hsl(var(--primary));
 }
 
 .title {
     font-size: 1.875rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: hsl(var(--foreground));
 }
 
 @media (min-width: 640px) {
@@ -109,7 +109,7 @@
 }
 
 .highlight {
-    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -117,7 +117,7 @@
 
 .subtitle {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     max-width: 42rem;
     margin: 0 auto;
 }
@@ -137,7 +137,7 @@
 
 .lastUpdate {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
 }
 
 .refreshButton {
@@ -146,9 +146,9 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background: rgba(34, 197, 94, 0.1);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    color: #22c55e;
+    background: hsl(var(--primary) / 0.1);
+    border: 1px solid hsl(var(--primary) / 0.3);
+    color: hsl(var(--primary));
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
@@ -156,7 +156,7 @@
 }
 
 .refreshButton:hover:not(:disabled) {
-    background: rgba(34, 197, 94, 0.2);
+    background: hsl(var(--primary) / 0.2);
 }
 
 .refreshButton:disabled {
@@ -203,8 +203,8 @@
 .stockCard {
     padding: 1.25rem;
     border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: hsl(var(--card) / 0.55);
+    border: 1px solid hsl(var(--border) / 0.6);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -214,8 +214,8 @@
 }
 
 .stockCard:hover {
-    border-color: rgba(34, 197, 94, 0.5);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: hsl(var(--primary) / 0.5);
+    background: hsl(var(--card) / 0.75);
     transform: translateY(-4px);
 }
 
@@ -229,13 +229,13 @@
 
 .stockSymbol {
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(var(--foreground));
     margin: 0;
 }
 
 .stockName {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     margin: 0;
     max-width: 120px;
     overflow: hidden;
@@ -245,8 +245,8 @@
 
 .stockBadge {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.05);
+    color: hsl(var(--muted-foreground));
+    background: hsl(var(--card) / 0.7);
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
 }
@@ -262,7 +262,7 @@
 .currentPrice {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(var(--foreground));
 }
 
 .priceChangePositive,
@@ -277,13 +277,13 @@
 }
 
 .priceChangePositive {
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
 }
 
 .priceChangeNegative {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+    background: hsl(var(--destructive) / 0.1);
+    color: hsl(var(--destructive));
 }
 
 .priceChangePositive svg,
@@ -298,7 +298,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
     padding-top: 0.75rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid hsl(var(--border) / 0.6);
 }
 
 .statItem {
@@ -308,14 +308,14 @@
 
 .statLabel {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     margin: 0 0 0.25rem 0;
 }
 
 .statValue {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #ffffff;
+    color: hsl(var(--foreground));
     margin: 0;
 }
 
@@ -324,7 +324,7 @@
     margin-top: 0.75rem;
     height: 2rem;
     border-radius: 0.25rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: hsl(var(--card) / 0.65);
     overflow: hidden;
 }
 
@@ -334,11 +334,11 @@
 }
 
 .chartPositive {
-    background: rgba(34, 197, 94, 0.2);
+    background: hsl(var(--primary) / 0.2);
 }
 
 .chartNegative {
-    background: rgba(239, 68, 68, 0.2);
+    background: hsl(var(--destructive) / 0.2);
 }
 
 /* NIFTY Indices Grid */
@@ -374,8 +374,8 @@
     justify-content: space-between;
     padding: 1rem;
     border-radius: 0.75rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: hsl(var(--card) / 0.65);
+    border: 1px solid hsl(var(--border) / 0.6);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.4s ease forwards;
@@ -383,14 +383,14 @@
 
 .indexName {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
     margin: 0 0 0.25rem 0;
 }
 
 .indexValue {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(var(--foreground));
     margin: 0;
 }
 
@@ -399,11 +399,11 @@
 }
 
 .indexChange.positive {
-    color: #22c55e;
+    color: hsl(var(--primary));
 }
 
 .indexChange.negative {
-    color: #ef4444;
+    color: hsl(var(--destructive));
 }
 
 .indexChangeValue {
@@ -441,11 +441,11 @@
 @keyframes livePulse {
     0%, 100% {
         opacity: 1;
-        box-shadow: 0 0 10px #22c55e;
+        box-shadow: 0 0 10px hsl(var(--primary));
     }
     50% {
         opacity: 0.5;
-        box-shadow: 0 0 20px #22c55e;
+        box-shadow: 0 0 20px hsl(var(--primary));
     }
 }
 
@@ -468,13 +468,13 @@
 .spinner {
     width: 50px;
     height: 50px;
-    border: 3px solid rgba(34, 197, 94, 0.2);
-    border-top-color: #22c55e;
+    border: 3px solid hsl(var(--primary) / 0.2);
+    border-top-color: hsl(var(--primary));
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
 .loadingText {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--muted-foreground));
 }

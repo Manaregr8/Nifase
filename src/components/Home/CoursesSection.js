@@ -1,6 +1,11 @@
 import styles from "./coursessection.module.css";
+import Link from "next/link";
+import Image from "next/image";
+import courses from "@/data/courses.json";
 
 export default function CoursesSection() {
+  const coursesToShow = courses.slice(0, 6);
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -14,66 +19,78 @@ export default function CoursesSection() {
         </p>
 
         <div className={styles.grid}>
-          {/* COURSE 1 */}
-          <div className={styles.card}>
-            <img
-              src="/diploma in financial marketing.PNG"
-              alt="Diploma in Financial Market Management"
-              className={styles.courseImage}
-            />
-            <div className={styles.badge}>Diploma Program</div>
-            <h3>Financial Market Management (DFMM)</h3>
-            <ul>
-              <li>Capital Market Trading</li>
-              <li>Derivatives & F&O</li>
-              <li>Commodity & Currency Markets</li>
-              <li>Advanced Technical Analysis</li>
-            </ul>
-            <p className={styles.outcome}>
-              In-depth training & certification to become a financial market
-              professional.
-            </p>
-          </div>
+          {coursesToShow.map((course) => {
+            const highlights = [];
+            for (const module of course.modules ?? []) {
+              for (const item of module.items ?? []) {
+                highlights.push(item);
+                if (highlights.length >= 3) break;
+              }
+              if (highlights.length >= 3) break;
+            }
 
-          {/* COURSE 2 */}
-          <div className={styles.card}>
-            <img
-              src="/diploma in research analysis.PNG"
-              alt="Diploma in Research Analyst"
-              className={styles.courseImage}
-            />
-            <div className={styles.badge}>Diploma Program</div>
-            <h3>Research Analyst</h3>
-            <ul>
-              <li>Fundamental Analysis</li>
-              <li>Equity Research & Valuation</li>
-              <li>Advanced Technical Analysis</li>
-              <li>Capital & Derivatives Markets</li>
-            </ul>
-            <p className={styles.outcome}>
-              Hands-on research training aligned with analyst and equity research
-              roles.
-            </p>
-          </div>
+            return (
+              <article key={course.id} className={styles.card}>
+                <div className={styles.imageWrap}>
+                  {course.popular && (
+                    <span
+                      className={styles.popularBadge}
+                      aria-label="Popular course"
+                    >
+                      Popular
+                    </span>
+                  )}
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={styles.image}
+                    priority={false}
+                  />
+                </div>
 
-          {/* COURSE 3 */}
-          <div className={styles.card}>
-            <img
-              src="/certificate in stock marketing.PNG"
-              alt="Certificate in Stock Marketing"
-              className={styles.courseImage}
-            />
-            <div className={styles.badge}>Certificate Program</div>
-            <h3>Stock Markets</h3>
-            <ul>
-              <li>Capital Markets</li>
-              <li>Derivatives Market</li>
-              <li>Technical Analysis</li>
-            </ul>
-            <p className={styles.outcome}>
-              Practical market training for beginners and aspiring traders.
-            </p>
-          </div>
+                <div className={styles.cardInner}>
+                  <div className={styles.badges}>
+                    <span className={styles.badge}>{course.level}</span>
+                    <span className={styles.badge}>{course.duration}</span>
+                  </div>
+
+                  <div className={styles.meta}>{course.category}</div>
+                  <h3 className={styles.courseTitle}>{course.title}</h3>
+                  <p className={styles.desc}>{course.shortDescription}</p>
+
+                  {highlights.length > 0 && (
+                    <ul className={styles.highlights} aria-label="Key topics">
+                      {highlights.map((text) => (
+                        <li key={text} className={styles.highlightItem}>
+                          {text}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className={styles.actions}>
+                    <div className={styles.details}>
+                      {course.modules?.length || 0} modules
+                    </div>
+                    <Link
+                      className={styles.button}
+                      href={`/courses/${course.slug}`}
+                    >
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className={styles.moreWrap}>
+          <Link className={styles.moreButton} href="/courses">
+            Explore More Courses
+          </Link>
         </div>
       </div>
     </section>

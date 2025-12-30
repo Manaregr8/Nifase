@@ -11,57 +11,17 @@ const ContactSection1 = () => {
     const sectionRef = useRef(null);
     const formRef = useRef(null);
     const infoCardsRef = useRef([]);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
     });
 
-    useEffect(() => {
-        const section = sectionRef.current;
-        const form = formRef.current;
-
-        const ctx = gsap.context(() => {
-            // Form animation
-            gsap.from(form, {
-                scrollTrigger: {
-                    trigger: section,
-                    // start: 'top 70%',
-                    end: 'center center',
-                    scrub: 1,
-                },
-                // x: -100,
-                // opacity: 0,
-            });
-
-            // Info cards animation
-            infoCardsRef.current.forEach((card, index) => {
-                if (card) {
-                    gsap.from(card, {
-                        scrollTrigger: {
-                            trigger: section,
-                            start: 'top 70%',
-                            end: 'center center',
-                            scrub: 1,
-                        },
-                        // y: 100,
-                        opacity: 0,
-                        delay: index * 0.1,
-                    });
-                }
-            });
-
-        }, section);
-
-        return () => ctx.revert();
-    }, []);
-
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = (e) => {
@@ -69,6 +29,86 @@ const ContactSection1 = () => {
         console.log('Form submitted:', formData);
         // Add your form submission logic here
     };
+
+    useEffect(() => {
+        const sectionEl = sectionRef.current;
+        if (!sectionEl) return;
+
+        let mm;
+        const ctx = gsap.context(() => {
+            mm = gsap.matchMedia();
+
+            mm.add(
+                {
+                    isMobile: "(max-width: 768px)",
+                    isDesktop: "(min-width: 769px)",
+                },
+                (context) => {
+                    const { isMobile } = context.conditions;
+                    const headingY = isMobile ? 36 : 80;
+                    const subHeadingY = isMobile ? 26 : 60;
+                    const cardY = isMobile ? 18 : 50;
+
+                    gsap.fromTo(
+                        ".contactHeading",
+                        { y: headingY, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.95,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: ".contactSection",
+                                start: "top 80%",
+                                toggleActions: "play none none none",
+                                once: true,
+                            },
+                        }
+                    );
+
+                    gsap.fromTo(
+                        ".contactSubHeading",
+                        { y: subHeadingY, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.85,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: ".contactSection",
+                                start: "top 75%",
+                                toggleActions: "play none none none",
+                                once: true,
+                            },
+                        }
+                    );
+
+                    gsap.fromTo(
+                        ".contactCard",
+                        { y: cardY, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power3.out",
+                            stagger: 0.14,
+                            scrollTrigger: {
+                                trigger: ".contactCardsWrap",
+                                start: "top 85%",
+                                toggleActions: "play none none none",
+                                once: true,
+                            },
+                        }
+                    );
+                }
+            );
+        }, sectionEl);
+
+        return () => {
+            mm?.revert();
+            ctx.revert();
+        };
+    }, []);
 
     return (
         <div ref={sectionRef} className={styles.section}>

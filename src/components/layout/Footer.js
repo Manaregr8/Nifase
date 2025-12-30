@@ -164,38 +164,58 @@ const Footer = () => {
 
     if (!footer || !grid) return;
 
+    let mm;
     const ctx = gsap.context(() => {
-      // Footer fade+lift on scroll forward
-      gsap.from(footer, {
-        scrollTrigger: {
-          trigger: footer,
-          start: "top bottom",
-          end: "top center",
-          scrub: 1, // forward linked to scroll
-        },
-        opacity: 0,
-        y: 60,
-        ease: "power2.out",
-      });
+      mm = gsap.matchMedia();
 
-      // Columns stagger (Product, Integrations, Resources, Company)
-      if (linkColsRef.current.length) {
-        gsap.from(linkColsRef.current, {
-          scrollTrigger: {
-            trigger: footer,
-            start: "top 85%",
-            end: "top 60%",
-            scrub: 1,
-          },
-          y: 40,
-          opacity: 0,
-          ease: "power2.out",
-          stagger: 0.15,
-        });
-      }
+      mm.add(
+        {
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
+        },
+        (context) => {
+          const { isMobile } = context.conditions;
+          const footerY = isMobile ? 28 : 60;
+          const colY = isMobile ? 18 : 40;
+
+          // Footer fade+lift (no scrub / no reverse)
+          gsap.from(footer, {
+            scrollTrigger: {
+              trigger: footer,
+              start: "top 90%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 0,
+            y: footerY,
+            duration: 0.9,
+            ease: "power2.out",
+          });
+
+          // Columns stagger
+          if (linkColsRef.current.length) {
+            gsap.from(linkColsRef.current, {
+              scrollTrigger: {
+                trigger: footer,
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              y: colY,
+              opacity: 0,
+              duration: 0.85,
+              ease: "power2.out",
+              stagger: 0.12,
+            });
+          }
+        }
+      );
     }, footer);
 
-    return () => ctx.revert();
+    return () => {
+      mm?.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (

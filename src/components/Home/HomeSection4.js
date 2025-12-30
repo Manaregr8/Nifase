@@ -18,63 +18,86 @@ const HomeSection4 = () => {
     const leftContent = leftContentRef.current;
     const rightCard = rightCardRef.current;
 
+    let mm;
     const ctx = gsap.context(() => {
-      // Left content: smoother parallax slide
-      gsap.fromTo(
-        leftContent,
-        { x: -120, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "center center",
-            scrub: 1.2,
-          },
-          x: 0,
-          opacity: 1,
-          ease: "power2.out",
-        }
-      );
+      mm = gsap.matchMedia();
 
-      // Right card: depth + slight scale
-      gsap.fromTo(
-        rightCard,
-        { x: 140, y: 40, scale: 0.88, opacity: 0 },
+      mm.add(
         {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "center center",
-            scrub: 1.2,
-          },
-          x: 0,
-          y: 0,
-          scale: 1,
-          opacity: 1,
-          ease: "power2.out",
-        }
-      );
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
+        },
+        (context) => {
+          const { isMobile } = context.conditions;
+          const leftX = isMobile ? -60 : -120;
+          const rightX = isMobile ? 70 : 140;
+          const linesX = isMobile ? 90 : 220;
+          const rightY = isMobile ? 20 : 40;
 
-      // Text lines: cascade from right
-      gsap.fromTo(
-        textLinesRef.current,
-        { x: 220, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "center center",
-            scrub: 1.2,
-          },
-          x: 0,
-          opacity: 1,
-          ease: "power2.out",
-          stagger: 0.08,
+          // Left content
+          gsap.fromTo(
+            leftContent,
+            { x: leftX, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: section,
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              x: 0,
+              opacity: 1,
+              duration: 1.0,
+              ease: "power2.out",
+            }
+          );
+
+          // Right card
+          gsap.fromTo(
+            rightCard,
+            { x: rightX, y: rightY, scale: 0.92, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: section,
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              x: 0,
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 1.05,
+              ease: "power2.out",
+            }
+          );
+
+          // Text lines
+          gsap.fromTo(
+            textLinesRef.current,
+            { x: linesX, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: section,
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              x: 0,
+              opacity: 1,
+              duration: 1.0,
+              ease: "power2.out",
+              stagger: 0.08,
+            }
+          );
         }
       );
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      mm?.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (

@@ -69,6 +69,12 @@ export default function NewSection() {
                 Learn how institutional traders and analysts actually operate.
               </div>
             </li>
+             <li>
+              <div className={styles.cardTitle}>Corporate-Style Learning</div>
+              <div className={styles.preview}>
+                Learn how institutional traders and analysts actually operate.
+              </div>
+            </li>
           </ul>
         </div>
 

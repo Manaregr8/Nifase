@@ -24,58 +24,82 @@ const HeroSection3 = () => {
     const fxLeft = fxLeftRef.current;
     const fxRight = fxRightRef.current;
 
+    let mm;
     const ctx = gsap.context(() => {
-      // First marquee line
-      gsap.from(text1, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "center center",
-          scrub: 1,
-        },
-        x: "100%",
-        opacity: 0,
-      });
+      mm = gsap.matchMedia();
 
-      // Second marquee line
-      gsap.from(text2, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "center center",
-          scrub: 1,
+      mm.add(
+        {
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
         },
-        x: "80%",
-        opacity: 0,
-      });
+        (context) => {
+          const { isMobile } = context.conditions;
 
-      // NIFASE left heading
-      gsap.from(fxLeft, {
-        scrollTrigger: {
-          trigger: fxSection,
-          start: "top 80%",
-          end: "center center",
-          scrub: 1,
-        },
-        x: -120,
-        opacity: 0,
-      });
+          // First marquee line
+          gsap.from(text1, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            x: isMobile ? "40%" : "100%",
+            opacity: 0,
+            duration: 1.05,
+            ease: "power3.out",
+          });
 
-      // NIFASE right card
-      gsap.from(fxRight, {
-        scrollTrigger: {
-          trigger: fxSection,
-          start: "top 80%",
-          end: "center center",
-          scrub: 1,
-        },
-        x: 120,
-        scale: 0.95,
-        opacity: 0,
-      });
+          // Second marquee line
+          gsap.from(text2, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            x: isMobile ? "30%" : "80%",
+            opacity: 0,
+            duration: 1.05,
+            ease: "power3.out",
+          });
+
+          // NIFASE left heading
+          gsap.from(fxLeft, {
+            scrollTrigger: {
+              trigger: fxSection,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            x: isMobile ? -60 : -120,
+            opacity: 0,
+            duration: 0.95,
+            ease: "power2.out",
+          });
+
+          // NIFASE right card
+          gsap.from(fxRight, {
+            scrollTrigger: {
+              trigger: fxSection,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            x: isMobile ? 60 : 120,
+            scale: 0.95,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out",
+          });
+        }
+      );
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      mm?.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (

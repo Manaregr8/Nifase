@@ -21,68 +21,97 @@ const HomeSection5 = () => {
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
 
+    let mm;
     const ctx = gsap.context(() => {
-      // Heading: subtle fade + slide from top
-      gsap.from([title, subtitle], {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 85%",
-          end: "top 50%",
-          scrub: 1,
-        },
-        y: -40,
-        opacity: 0,
-        stagger: 0.15,
-      });
+      mm = gsap.matchMedia();
 
-      // Main glass frame: depth + blur to sharp
-      gsap.from(mainCard, {
-        scrollTrigger: {
-          trigger: mainCard,
-          start: "top 80%",
-          end: "center center",
-          scrub: 1.2,
+      mm.add(
+        {
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
         },
-        y: 100,
-        opacity: 0,
-        scale: 0.9,
-        filter: "blur(12px)",
-        transformOrigin: "50% 60%",
-      });
+        (context) => {
+          const { isMobile } = context.conditions;
+          const headingY = isMobile ? -22 : -40;
+          const cardY = isMobile ? 60 : 100;
+          const programY = isMobile ? 34 : 60;
+          const stepY = isMobile ? 36 : 60;
+          const sideX = isMobile ? 18 : 40;
 
-      // Individual stacked program cards: wave‑style stagger
-      gsap.from(programCardsRef.current, {
-        scrollTrigger: {
-          trigger: mainCard,
-          start: "top 80%",
-          end: "center center",
-          scrub: 1,
-        },
-        y: 60,
-        rotateY: 18,
-        opacity: 0,
-        stagger: 0.12,
-        transformOrigin: "50% 50%",
-      });
+          // Heading
+          gsap.from([title, subtitle], {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: headingY,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.9,
+            ease: "power2.out",
+          });
 
-      // Steps: alternate slide directions
-      stepsRef.current.forEach((el, i) => {
-        if (!el) return;
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            end: "top 55%",
-            scrub: 1,
-          },
-          y: 60,
-          x: i === 0 ? -40 : i === 2 ? 40 : 0,
-          opacity: 0,
-        });
-      });
+          // Main glass frame
+          gsap.from(mainCard, {
+            scrollTrigger: {
+              trigger: mainCard,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: cardY,
+            opacity: 0,
+            scale: 0.92,
+            filter: "blur(12px)",
+            transformOrigin: "50% 60%",
+            duration: 1.05,
+            ease: "power2.out",
+          });
+
+          // Individual stacked program cards
+          gsap.from(programCardsRef.current, {
+            scrollTrigger: {
+              trigger: mainCard,
+              start: "top 80%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: programY,
+            rotateY: 14,
+            opacity: 0,
+            stagger: 0.12,
+            transformOrigin: "50% 50%",
+            duration: 0.9,
+            ease: "power2.out",
+          });
+
+          // Steps
+          stepsRef.current.forEach((el, i) => {
+            if (!el) return;
+            gsap.from(el, {
+              scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              y: stepY,
+              x: i === 0 ? -sideX : i === 2 ? sideX : 0,
+              opacity: 0,
+              duration: 0.85,
+              ease: "power2.out",
+            });
+          });
+        }
+      );
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      mm?.revert();
+      ctx.revert();
+    };
   }, []);
 
   const steps = [
@@ -150,7 +179,7 @@ const HomeSection5 = () => {
               </div>
               <div className={styles.cardMain}>
                 <span className={styles.cardTier}>Gold</span>
-                <span className={styles.cardValue}>$20,000</span>
+                <span className={styles.cardValue}>₹ 20,000</span>
                 <span className={styles.cardCaption}>Virtual capital size</span>
               </div>
               <button className={styles.cardButton}>Start program</button>

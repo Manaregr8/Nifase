@@ -10,6 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 const HomeSection2 = () => {
     const sectionRef = useRef(null);
     const statsRef = useRef([]);
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(true);
+    const [isMuted, setIsMuted] = useState(false);
     const [counts, setCounts] = useState({
         paidout: 0,
         traders: 0,
@@ -99,6 +102,64 @@ const HomeSection2 = () => {
 
         return () => ctx.revert();
     }, []);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const syncPlaying = () => setIsPlaying(!video.paused);
+        const onVolumeChange = () => setIsMuted(video.muted);
+
+        video.addEventListener('play', syncPlaying);
+        video.addEventListener('pause', syncPlaying);
+        video.addEventListener('volumechange', onVolumeChange);
+
+        // Try to autoplay with sound (may be blocked by browser autoplay policy)
+        video.muted = false;
+        video.volume = 1;
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') {
+            playAttempt.catch(() => {
+                video.muted = true;
+                setIsMuted(true);
+                video.play().catch(() => {});
+            });
+        }
+
+        // Initialize states
+        syncPlaying();
+        onVolumeChange();
+
+        return () => {
+            video.removeEventListener('play', syncPlaying);
+            video.removeEventListener('pause', syncPlaying);
+            video.removeEventListener('volumechange', onVolumeChange);
+        };
+    }, []);
+
+    const handleTogglePlay = async () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (video.paused) {
+            // User interaction: try to turn audio on
+            video.muted = false;
+            video.volume = 1;
+            try {
+                await video.play();
+            } catch {
+                video.muted = true;
+                setIsMuted(true);
+                try {
+                    await video.play();
+                } catch {
+                    // ignore
+                }
+            }
+        } else {
+            video.pause();
+        }
+    };
 
     const animateNumbers = () => {
         // Animate paidout
@@ -233,12 +294,38 @@ const HomeSection2 = () => {
 
                     {/* Center Video/Image */}
                     <div className={styles.centerMedia}>
-                        <div className={styles.playButton}>
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
-                                <path d="M25 20 L40 30 L25 40 Z" fill="white"/>
-                            </svg>
-                        </div>
+                        <video
+                            ref={videoRef}
+                            className={styles.video}
+                            autoPlay
+                            loop
+                            playsInline
+                            preload="metadata"
+                        >
+                            <source
+                                src="https://www.pexels.com/download/video/5726502/"
+                                type="video/mp4"
+                            />
+                        </video>
+
+                        <button
+                            type="button"
+                            className={styles.mediaControl}
+                            onClick={handleTogglePlay}
+                            aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                            aria-pressed={isPlaying}
+                            title={isMuted ? 'Audio may be blocked until you tap' : undefined}
+                        >
+                            {isPlaying ? (
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6 5h4v14H6V5Zm8 0h4v14h-4V5Z" />
+                                </svg>
+                            ) : (
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7L8 5Z" />
+                                </svg>
+                            )}
+                        </button>
                     </div>
                 </div>
             </div>

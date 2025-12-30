@@ -4,8 +4,8 @@
   min-height: 90vh;
   /* background:
     radial-gradient(circle at 50% 50%, #020617 0%, #020617 55%, #000000 100%); */
-    background: #000000;
-  color: #f9fafb;
+    background: hsl(var(--background));
+  color: hsl(var(--foreground));
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -18,8 +18,8 @@
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
 }
@@ -31,7 +31,7 @@
   transform: translate(-50%, -50%);
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
   filter: blur(18px);
   opacity: 0.9;
   pointer-events: none;
@@ -49,13 +49,13 @@
   font-size: clamp(4.3rem, 4.3vw, 3.4rem);
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: #f9fafb;
+  color: hsl(var(--foreground));
   margin-bottom: 2.8rem;
   text-transform: lowercase;
 }
 
 .headingTransparent {
-  background: linear-gradient(120deg, rgba(148, 163, 184, 0.1), rgba(59, 246, 81, 0.45));
+  background: linear-gradient(120deg, hsl(var(--border) / 0.35), hsl(var(--accent) / 0.45));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -74,12 +74,12 @@
   border-radius: 1.4rem;
   padding: 1.7rem 1.8rem 1.5rem;
   background:
-    radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.35), transparent 60%),
-    rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(56, 189, 248, 0.5);
+    radial-gradient(circle at 0 0, hsl(var(--primary) / 0.25), transparent 60%),
+    hsl(var(--card) / 0.95);
+  border: 1px solid hsl(var(--border) / 0.65);
   box-shadow:
-    0 26px 80px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(56, 189, 248, 0.4);
+    0 26px 80px hsl(var(--background) / 0.9),
+    0 0 40px hsl(var(--primary) / 0.25);
 }
 
 /* Header */
@@ -91,15 +91,15 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(148, 163, 184, 0.9);
+  color: hsl(var(--muted-foreground));
 }
 
 .logoDot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: radial-gradient(circle, #22c55e, transparent 70%);
-  box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+  background: radial-gradient(circle, hsl(var(--primary)), transparent 70%);
+  box-shadow: 0 0 14px hsl(var(--primary) / 0.9);
 }
 
 .brand {
@@ -107,15 +107,15 @@
   text-align: left;
   margin-left: 0.7rem;
   font-weight: 600;
-  color: #e0f2fe;
+  color: hsl(var(--foreground));
 }
 
 .tag {
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.7);
+  border: 1px solid hsl(var(--border) / 0.75);
   font-size: 0.65rem;
-  color: #bae6fd;
+  color: hsl(var(--foreground) / 0.85);
 }
 
 /* Body */
@@ -128,13 +128,13 @@
 .certTitle {
   font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(226, 232, 240, 0.96);
+  color: hsl(var(--foreground) / 0.96);
 }
 
 .certLine {
   font-size: 0.8rem;
   line-height: 1.6;
-  color: rgba(148, 163, 184, 0.92);
+  color: hsl(var(--muted-foreground) / 0.92);
 }
 
 .certAmountRow {
@@ -144,13 +144,13 @@
   gap: 1rem;
   padding: 0.8rem 0.95rem;
   border-radius: 0.9rem;
-  background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.25), transparent 80%);
-  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: radial-gradient(circle at 0 0, hsl(var(--primary) / 0.18), transparent 80%);
+  border: 1px solid hsl(var(--border) / 0.7);
 }
 
 .label {
   font-size: 0.75rem;
-  color: rgba(191, 219, 254, 0.95);
+  color: hsl(var(--muted-foreground) / 0.95);
   text-transform: uppercase;
   letter-spacing: 0.16em;
 }
@@ -158,7 +158,7 @@
 .amount {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #e0f2fe;
+  color: hsl(var(--foreground));
 }
 
 .certMetaRow {
@@ -176,14 +176,14 @@
   font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.9);
+  color: hsl(var(--muted-foreground));
   margin-bottom: 0.25rem;
 }
 
 .metaValue {
   display: block;
   font-size: 0.85rem;
-  color: rgba(226, 232, 240, 0.95);
+  color: hsl(var(--foreground) / 0.95);
 }
 
 /* Caption */
@@ -191,7 +191,7 @@
   margin: 1.8rem auto 0;
   max-width: 520px;
   font-size: 0.9rem;
-  color: rgba(209, 213, 219, 0.9);
+  color: hsl(var(--muted-foreground));
 }
 
 /* Responsive */
