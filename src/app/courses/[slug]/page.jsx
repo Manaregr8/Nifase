@@ -5,6 +5,7 @@ import styles from "./courseDetail.module.css";
 import courseCardStyles from "../courses.module.css";
 import courses from "@/data/courses.json";
 import HomeSection7 from "@/components/Home/HomeSection7";
+import CourseEnrollCta from "./CourseEnrollCta.client";
 
 export function generateStaticParams() {
   return courses.map((course) => ({ slug: course.slug }));
@@ -26,6 +27,129 @@ export default async function CourseDetailPage({ params }) {
   const course = courses.find((c) => c.slug === slug);
   if (!course) notFound();
 
+  const hiringCompanies = [
+    {
+      name: "Brokerage",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M4 19V5m0 14h16"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M7 15l4-4 3 3 5-6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Investment Bank",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M3 10h18M5 10V20m4-10V20m6-10V20m4-10V20M4 20h16"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M12 3 3 10h18L12 3Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "FinTech",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M9 12a3 3 0 0 0 6 0c0-1.2-.7-2.2-1.8-2.7L11.4 8.5C10.3 8 9.6 7 9.6 5.8A3 3 0 0 1 15 4"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M12 2v2m0 18v-2"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Asset Management",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M4 7h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 12h16"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Research",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
+          <path
+            d="M16.5 16.5 21 21"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Corporate Finance",
+      Svg: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+          <path
+            d="M7 7h10M9 12h6M11 17h2"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 4h16v16H4V4Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+  ];
+
   const moduleCount = course.modules?.length ?? 0;
   const rating = Number(course.rating ?? 4.8);
   const reviewCount = Number(course.reviewCount ?? 0);
@@ -34,6 +158,8 @@ export default async function CourseDetailPage({ params }) {
   const schedule = String(course.schedule ?? "Flexible schedule");
   const startDateLabel = String(course.startDateLabel ?? "Starts soon");
   const instructor = String(course.instructor ?? "NIFASE Faculty");
+  const offeredBy = String(course.offeredBy ?? "NIFASE Institute");
+  const offeredByLogo = String(course.offeredByLogo ?? "/NIFASE_Logo-removebg-preview.png");
 
   const skills = Array.isArray(course.skills) && course.skills.length
     ? course.skills
@@ -74,6 +200,9 @@ export default async function CourseDetailPage({ params }) {
   const formattedEnrolled = enrolledCount
     ? `${enrolledCount.toLocaleString()} already enrolled`
     : "";
+  const formattedLearners = enrolledCount
+    ? `${enrolledCount.toLocaleString()} learners`
+    : "";
 
   const getDurationMonths = (value) => {
     const text = String(value ?? "");
@@ -108,6 +237,23 @@ export default async function CourseDetailPage({ params }) {
   return (
     <main className={styles.page}>
       <div className={styles.container}>
+        <div className={styles.topNav}>
+          <Link className={styles.backLink} href="/courses" aria-label="Back to courses">
+            <span className={styles.backIcon} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            Back
+          </Link>
+        </div>
+
         <header className={styles.hero}>
           <div className={styles.heroLeft}>
             <div className={styles.providerRow}>
@@ -127,10 +273,7 @@ export default async function CourseDetailPage({ params }) {
             </div>
 
             <div className={styles.ctaRow}>
-              <Link className={styles.ctaButton} href="/contact-us">
-                Enroll now
-                <span className={styles.ctaSub}>{startDateLabel}</span>
-              </Link>
+              <CourseEnrollCta courseSlug={slug} courseTitle={course.title} startDateLabel={startDateLabel} />
 
               <div className={styles.ctaMeta}>
                 <div className={styles.enrolled}>{formattedEnrolled}</div>
@@ -209,28 +352,110 @@ export default async function CourseDetailPage({ params }) {
               </div>
             </div>
           )}
+
+          <div className={styles.hiringSection} aria-label="Hiring companies">
+            <div className={styles.hiringText}>
+              <h2 className={styles.hiringTitle}>
+                See where our learners get hired
+              </h2>
+              <p className={styles.hiringSubtitle}>
+                Roles across brokerages, banks, research desks, and fintech.
+              </p>
+              <Link className={styles.hiringLink} href="/contact-us">
+                Hiring / Placement support
+              </Link>
+            </div>
+
+            <div className={styles.hiringLogos} aria-hidden="true">
+              {hiringCompanies.map((company) => (
+                <div key={company.name} className={styles.hiringLogoTile} title={company.name}>
+                  <company.Svg className={styles.hiringLogoSvg} />
+                  <span className={styles.hiringLogoName}>{company.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section id="modules" className={styles.modules} aria-label="Course modules">
           <h2 className={styles.sectionTitle}>Modules</h2>
-          <div className={styles.moduleGrid}>
-            {course.modules.map((module, idx) => (
-              <details key={`${course.id}-${idx}`} className={styles.module}>
-                <summary className={styles.moduleSummary}>
-                  <span className={styles.moduleTitle}>{module.title}</span>
-                  <span className={styles.chevron} aria-hidden="true">
-                    ▾
-                  </span>
-                </summary>
-                <div className={styles.moduleBody}>
-                  <ul className={styles.list}>
-                    {module.items.map((item, itemIdx) => (
-                      <li key={`${course.id}-${idx}-${itemIdx}`}>{item}</li>
-                    ))}
-                  </ul>
+          <div className={styles.modulesLayout}>
+            <div className={styles.modulesMain}>
+              <div className={styles.moduleGrid}>
+                {(course.modules ?? []).map((module, idx) => (
+                  <details key={`${course.id}-${idx}`} className={styles.module}>
+                    <summary className={styles.moduleSummary}>
+                      <span className={styles.moduleTitle}>{module.title}</span>
+                      <span className={styles.chevron} aria-hidden="true">
+                        ▾
+                      </span>
+                    </summary>
+                    <div className={styles.moduleBody}>
+                      <ul className={styles.list}>
+                        {(module.items ?? []).map((item, itemIdx) => (
+                          <li key={`${course.id}-${idx}-${itemIdx}`}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            <aside className={styles.modulesSide} aria-label="Instructor and offered by">
+              <div className={styles.infoCard}>
+                <div className={styles.infoBlock}>
+                  <div className={styles.infoHeader}>
+                    <h3 className={styles.infoTitle}>Instructor</h3>
+                    <div className={styles.infoRatingRow}>
+                      <span className={styles.infoLabel}>Instructor ratings</span>
+                      <span className={styles.infoRating}>
+                        {formattedRating} <span className={styles.infoStar} aria-hidden="true">★</span>
+                      </span>
+                      <span className={styles.infoCount}>
+                        {reviewCount ? `(${reviewCount.toLocaleString()} ratings)` : ""}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className={styles.instructorCardRow}>
+                    <div className={styles.instructorAvatar} aria-hidden="true">
+                      {initials || "NF"}
+                    </div>
+                    <div className={styles.instructorMeta}>
+                      <div className={styles.instructorName}>{instructor}</div>
+                      <div className={styles.instructorOrg}>{offeredBy}</div>
+                      {formattedLearners && (
+                        <div className={styles.instructorStats}>{formattedLearners}</div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </details>
-            ))}
+
+                <div className={styles.infoDivider} />
+
+                <div className={styles.infoBlock}>
+                  <h3 className={styles.infoTitle}>Offered by</h3>
+                  <div className={styles.offeredRow}>
+                    <div className={styles.offeredLogoWrap}>
+                      <Image
+                        src={offeredByLogo}
+                        alt={offeredBy}
+                        width={44}
+                        height={44}
+                        className={styles.offeredLogo}
+                      />
+                    </div>
+                    <div className={styles.offeredMeta}>
+                      <div className={styles.offeredName}>{offeredBy}</div>
+                      <Link className={styles.offeredLink} href="/contact-us">
+                        Learn more
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 

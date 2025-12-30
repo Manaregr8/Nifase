@@ -219,6 +219,23 @@
     }
 }
 
+.ctaSecondary {
+    background: hsl(var(--background) / 0.35) !important;
+    border-color: hsl(var(--border) / 0.55) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.ctaSecondary:hover {
+    background: hsl(var(--background) / 0.5) !important;
+    border-color: hsl(var(--border) / 0.75) !important;
+}
+
+.ctaSecondary:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+}
+
 .ctaButtonPrimary {
     display: inline-flex;
     align-items: center;

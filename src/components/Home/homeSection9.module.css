@@ -423,6 +423,16 @@
     padding: 1.25rem;
   }
 
+  .stockSelector .stockButton {
+    display: none;
+  }
+
+  .stockSelector .stockButton[data-symbol="RELIANCE"],
+  .stockSelector .stockButton[data-symbol="TCS"],
+  .stockSelector .stockButton[data-symbol="HDFCBANK"] {
+    display: inline-flex;
+  }
+
   .stockButton,
   .timeButton {
     padding: 0.5rem 0.75rem;

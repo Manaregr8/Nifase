@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import styles from './header.module.css';
+import CoursePopupForm from "@/components/CoursePopupForm";
 
 const MenuToggleIcon = ({ open }) => {
   return (
@@ -35,6 +36,7 @@ const Header = () => {
   const [scroll, setScroll] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [leadOpen, setLeadOpen] = useState(false);
 
   const navLinks = [
     { title: 'Home', href: '/' },
@@ -47,7 +49,7 @@ const Header = () => {
         { title: 'Blog', href: '#blog', tagline: 'Latest news and updates' },
       ]
     },
-    { title: 'Contact', href: '/contact-us' },
+    // { title: 'Contact', href: '/contact-us' },
     { title: 'About', href: '/about' },
     { title: 'Courses', href: '/courses' },
   ];
@@ -131,12 +133,16 @@ const Header = () => {
 
           {/* Desktop Auth Buttons */}
           <div className={styles.desktopAuth}>
-            <a href="/auth/sign-in" className={styles.signInBtn}>
-              Sign In
+            <a href="/contact-us" className={styles.signInBtn}>
+              Contact
             </a>
-            <a href="/auth/sign-up" className={styles.getStartedBtn}>
+            <button
+              type="button"
+              className={styles.getStartedBtn}
+              onClick={() => setLeadOpen(true)}
+            >
               Get Started
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -158,9 +164,16 @@ const Header = () => {
               <a href="/auth/sign-in" className={styles.mobileSignInBtn}>
                 Sign In
               </a>
-              <a href="/auth/sign-up" className={styles.mobileGetStartedBtn}>
+              <button
+                type="button"
+                className={styles.mobileGetStartedBtn}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setLeadOpen(true);
+                }}
+              >
                 Get Started
-              </a>
+              </button>
             </div>
 
             {/* Mobile Navigation Links */}
@@ -215,6 +228,8 @@ const Header = () => {
           </div>
         </div>
       )}
+
+      <CoursePopupForm open={leadOpen} onClose={() => setLeadOpen(false)} />
     </header>
   );
 };

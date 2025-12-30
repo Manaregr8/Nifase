@@ -1,9 +1,11 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CoursePopupForm from "@/components/CoursePopupForm";
 
 import styles from "./homeSection1.module.css";
 
@@ -20,6 +22,8 @@ const courses = [
 ];
 
 const HomeSection1 = ({ user }) => {
+  const [leadOpen, setLeadOpen] = useState(false);
+
   return (
     <section className={styles.section}>
       <div className={`${styles.gridOverlay} grid-overlay`} aria-hidden="true" />
@@ -73,14 +77,17 @@ const HomeSection1 = ({ user }) => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className={styles.ctaWrapper}
           >
-            <Button asChild size="lg" className="glow-primary">
-              <Link href={user ? "/dashboard" : "/auth/sign-in"}>
-                Start Learning Now
-                <ArrowRight className={styles.ctaIcon} />
-              </Link>
+            <Button
+              type="button"
+              size="lg"
+              className="glow-primary"
+              onClick={() => setLeadOpen(true)}
+            >
+              Get Started
+              <ArrowRight className={styles.ctaIcon} />
             </Button>
 
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className={styles.ctaSecondary}>
               <Link href="/courses">Explore Programs</Link>
             </Button>
           </motion.div>
@@ -123,6 +130,8 @@ const HomeSection1 = ({ user }) => {
           </motion.div>
         </div>
       </div>
+
+      <CoursePopupForm open={leadOpen} onClose={() => setLeadOpen(false)} />
 
       <div className={styles.tickerWrapper}>
         <div className={styles.ticker}>

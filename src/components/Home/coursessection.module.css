@@ -1,13 +1,9 @@
 .section {
   position: relative;
-  min-height: 100vh;
   width: 100%;
   background: hsl(var(--background));
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 100px 6%;
+  padding: clamp(3.5rem, 6vw, 5rem) 1.5rem;
 }
 
 .section::before {
@@ -23,6 +19,7 @@
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -31,8 +28,9 @@
 /* HEADINGS */
 
 .heading {
-  font-size: 42px;
-  font-weight: 700;
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.15;
   margin-bottom: 14px;
 }
 
@@ -49,10 +47,10 @@
     "Segoe UI",
     sans-serif
   );
-  font-size: 15px;
+  font-size: clamp(0.95rem, 1.5vw, 1rem);
   line-height: 1.7;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 50px;
+  margin-bottom: clamp(1.75rem, 3vw, 3rem);
 }
 
 /* GRID */
@@ -322,13 +320,34 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .heading {
-    font-size: 34px;
+  .section {
+    padding: clamp(3.25rem, 6vw, 4.5rem) 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .subheading {
+    max-width: 60ch;
   }
 }
 
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 4rem 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
   }
 }

@@ -344,6 +344,7 @@ const HomeSection9 = () => {
               {stocks.map((stock) => (
                 <button
                   key={stock.symbol}
+                  data-symbol={stock.symbol}
                   className={`${styles.stockButton} ${selectedStock === stock.symbol ? styles.stockButtonActive : ''}`}
                   onClick={() => setSelectedStock(stock.symbol)}
                 >

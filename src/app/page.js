@@ -35,6 +35,7 @@ export default function Home() {
         <HomeSection2 />
         <CorporateLearningSection />
         <NewgallerySection/>
+        <TestimonialSection/>
         <CoursesSection/>
         <HomeSection3 />
         <HomeSection4 />
@@ -42,7 +43,6 @@ export default function Home() {
         <HomeSection5 />
         <HomeSection6 />
         <HomeSection7 />
-        <TestimonialSection/>
         <HomeSection8 />
         <HomeSection9 />
         <BookMeeting/>
