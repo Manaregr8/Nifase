@@ -123,7 +123,7 @@ const HomeSection1 = ({ user }) => {
                 <TrendingUp className={styles.statIconSvg} />
               </div>
               <div className={styles.statContent}>
-                <p className={styles.statNumber}>8+ Years</p>
+                <p className={styles.statNumber}>15+ Years</p>
                 <p className={styles.statLabel}>Experience</p>
               </div>
             </div>

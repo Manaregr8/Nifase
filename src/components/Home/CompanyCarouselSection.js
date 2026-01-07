@@ -49,7 +49,8 @@ export default function CompanyCarouselSection() {
     <section className={styles.section} aria-label="Trading company logos">
       <div className={styles.container}>
         <h2 className={styles.heading}>
-          Company <span>Logos</span>
+          Trusted by India’s Leading 
+ <span> Financial Brands</span>
         </h2>
         <p className={styles.subheading}>
           Indian finance & markets brands.

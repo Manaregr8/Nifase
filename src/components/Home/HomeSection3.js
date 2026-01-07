@@ -155,7 +155,7 @@ const HeroSection3 = () => {
             <span className={styles.gradientText}>Trading Journey</span>
           </h2>
           <p className={styles.subtitle}>
-            Join thousands of successful NSE traders at NIFASE
+            From beginner to confident trader — with NIFASE
           </p>
         </div>
       </div>
