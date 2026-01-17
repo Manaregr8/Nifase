@@ -41,13 +41,13 @@ const Header = () => {
   const navLinks = [
     { title: 'Home', href: '/' },
     {
-      title: 'Resources',
-      menu: [
-        { title: 'Support', href: '#support', tagline: 'Get help when you need it' },
-        { title: 'FAQ', href: '#faq', tagline: 'Common questions answered' },
-        { title: 'Documentation', href: '#docs', tagline: 'Detailed guides and docs' },
-        { title: 'Blog', href: '#blog', tagline: 'Latest news and updates' },
-      ]
+      title: 'Blog',href: '/blog'
+      // menu: [
+      //   { title: 'Support', href: '#support', tagline: 'Get help when you need it' },
+      //   { title: 'FAQ', href: '#faq', tagline: 'Common questions answered' },
+      //   { title: 'Documentation', href: '#docs', tagline: 'Detailed guides and docs' },
+      //   { title: 'Blog', href: '#blog', tagline: 'Latest news and updates' },
+      // ]
     },
     // { title: 'Contact', href: '/contact-us' },
     { title: 'About', href: '/about' },

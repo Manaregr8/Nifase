@@ -8,6 +8,7 @@ const CoursesSec1 = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
+        
         <h1 className={styles.title}>
           From Basics to Survive,<br />
           Grow Your <span className={styles.highlight}>Trading Skills</span>
