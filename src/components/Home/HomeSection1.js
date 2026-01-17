@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Award, Users } from "lucide-react";
@@ -20,6 +20,49 @@ const courses = [
   "Financial Modelling",
   "NSE Trading",
 ];
+
+const TypewriterText = () => {
+  const [currentText, setCurrentText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const texts = [
+    "Options Trading",
+    "Crypto Trading",
+    "Trading Strategies",
+    "Investing",
+    "Technical Analysis"
+  ];
+
+  useEffect(() => {
+    const currentFullText = texts[currentIndex];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (currentText.length < currentFullText.length) {
+          setCurrentText(currentFullText.substring(0, currentText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (currentText.length > 0) {
+          setCurrentText(currentFullText.substring(0, currentText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, currentIndex, isDeleting]);
+
+  return (
+    <span className={styles.typewriterText}>
+      {currentText}
+      <span className={styles.cursor}>|</span>
+    </span>
+  );
+};
 
 const HomeSection1 = ({ user }) => {
   const [leadOpen, setLeadOpen] = useState(false);
@@ -50,7 +93,9 @@ const HomeSection1 = ({ user }) => {
             Master The{" "}
             <span className="gradient-text">Stock Market</span>
             <br />
-            & <span className="gradient-text">Finance</span>
+            & <span className="gradient-text">Finance</span> 
+            <span className="ai"> with </span>
+            <span className="gradient-text">AI</span> 
           </motion.h1>
 
           <motion.p
@@ -61,6 +106,16 @@ const HomeSection1 = ({ user }) => {
           >
             Trading, Investment & Financial Markets
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            // className={styles.learnWrapper}
+          >
+            {/* <span className={styles.learnText}>Learn</span> */}
+            <TypewriterText />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
