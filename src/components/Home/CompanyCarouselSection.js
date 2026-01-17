@@ -1,44 +1,84 @@
 import styles from "./companyCarouselSection.module.css";
 
-const favicon = (domain, size = 128) =>
-  `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=${size}`;
-
 const companies = [
   {
     name: "NSE India",
-    logo: favicon("nseindia.com"),
+    logo: "/logos/1.png",
   },
   {
     name: "BSE India",
-    logo: favicon("bseindia.com"),
+    logo: "/logos/2.png",
   },
   {
     name: "Zerodha",
-    logo: favicon("zerodha.com"),
+    logo: "/logos/3.png",
+    invertColor: true,
   },
   {
     name: "Upstox",
-    logo: favicon("upstox.com"),
+    logo: "/logos/4.png",
   },
   {
     name: "Groww",
-    logo: favicon("groww.in"),
+    logo: "/logos/5.png",
   },
   {
     name: "Angel One",
-    logo: favicon("angelone.in"),
+    logo: "/logos/6.png",
   },
   {
     name: "HDFC Bank",
-    logo: favicon("hdfcbank.com"),
+    logo: "/logos/7.png",
   },
   {
     name: "ICICI Bank",
-    logo: favicon("icicibank.com"),
+    logo: "/logos/8.png",
   },
   {
     name: "State Bank of India",
-    logo: favicon("sbi.co.in"),
+    logo: "/logos/9.png",
+    invertColor: true,
+  },
+  {
+    name: "Axis Bank",
+    logo: "/logos/10.png",
+  },
+  {
+    name: "Kotak Mahindra Bank",
+    logo: "/logos/11.png",
+    invertColor: true,
+  },
+  {
+    name: "IDFC First Bank",
+    logo: "/logos/12.png",
+  },
+  {
+    name: "Yes Bank",
+    logo: "/logos/13.png",
+  },
+  {
+    name: "IndusInd Bank",
+    logo: "/logos/14.png",
+  },
+  {
+    name: "Federal Bank",
+    logo: "/logos/15.png",
+  },
+  {
+    name: "RBL Bank",
+    logo: "/logos/16.png",
+  },
+  {
+    name: "South Indian Bank",
+    logo: "/logos/17.png",
+  },
+  {
+    name: "Karur Vysya Bank",
+    logo: "/logos/18.png",
+  },
+  {
+    name: "City Union Bank",
+    logo: "/logos/19.png",
   },
 ];
 
@@ -49,7 +89,7 @@ export default function CompanyCarouselSection() {
     <section className={styles.section} aria-label="Trading company logos">
       <div className={styles.container}>
         <h2 className={styles.heading}>
-          Trusted by India’s Leading 
+          Trusted by India's Leading 
  <span> Financial Brands</span>
         </h2>
         <p className={styles.subheading}>
@@ -64,15 +104,9 @@ export default function CompanyCarouselSection() {
                   src={company.logo}
                   alt={company.name}
                   className={styles.logo}
+                  style={company.invertColor ? { filter: 'brightness(0)' } : undefined}
                   loading="lazy"
                   decoding="async"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.dataset.fallbackApplied === "true") return;
-                    img.dataset.fallbackApplied = "true";
-                    img.src = favicon(company.logo.replace(/^.*domain=([^&]+).*$/, "$1"), 64);
-                  }}
                 />
               </div>
             ))}
