@@ -286,7 +286,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={styles.linkItem}>
-                    <Link href="" className={styles.link}>
+                    <Link href="https://www.instagram.com/nifase.official?igsh=ZTJkb2R1aHZ3b3Vn" className={styles.link}>
                       Instagram
                     </Link>
                   </li>

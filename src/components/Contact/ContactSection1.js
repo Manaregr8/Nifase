@@ -237,11 +237,11 @@ const ContactSection1 = () => {
                                 </svg>
                             </div>
                             <h3 className={styles.infoTitle}>Call Us</h3>
-                            <p className={styles.infoText}>+91 (555) 123-4567</p>
+                            <p className={styles.infoText}>+91 8743912102</p>
                             <p className={styles.infoText}>Mon-Sat 10am-6pm IST</p>
                         </div>
 
-                        {/* Location Card */}
+                        {/* Location Card
                         <a
                             ref={el => infoCardsRef.current[2] = el}
                             className={styles.infoCard}
@@ -259,7 +259,7 @@ const ContactSection1 = () => {
                             <h3 className={styles.infoTitle}>Visit Us</h3>
                             <p className={styles.infoText}>Savitri Cinema Complex, Block E, Greater Kailash II, Greater Kailash</p>
                             <p className={styles.infoText}> New Delhi, Delhi 110080</p>
-                        </a>
+                        </a> */}
 
                         {/* Social Card */}
                         <div 
@@ -321,7 +321,7 @@ const ContactSection1 = () => {
                                     </svg>
                                 </a>
                                 <a
-                                    href="https://www.instagram.com/nifase_01/"
+                                    href="https://www.instagram.com/nifase.official?igsh=ZTJkb2R1aHZ3b3Vn"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.socialLink}
@@ -387,7 +387,7 @@ const ContactSection1 = () => {
                 </div>
             </div>
 
-            {/* Full-width Map */}
+            {/* Full-width Map
             <div className={styles.mapBleed}>
                 <div className={styles.mapShell}>
                     <iframe
@@ -399,7 +399,7 @@ const ContactSection1 = () => {
                         allowFullScreen
                     />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
