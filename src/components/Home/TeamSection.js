@@ -4,11 +4,11 @@ import styles from "./TeamSection.module.css";
 
 const trainer = {
   role: "Head Trainer • NSE & Derivatives",
-  name: "Gaurav Heera",
+  name: "Puneet Narag",
   image: "/instructor.webp",
-  experience: "8+ years live market experience",
+  experience: "20+ years live market experience",
   highlight:
-    "Specializes in intraday, index trading, and building rule‑based systems for retail traders.",
+    "Specializes in Optional trading , intraday, index trading, and building rule‑based systems for retail traders.",
   rating: 4.9,
   ratingCount: "320+ reviews",
 };
