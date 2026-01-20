@@ -7,8 +7,10 @@
     background: hsl(var(--background));
     display: flex;
     flex-direction: column;
-    padding-bottom: 10;
+    padding-top: -1.5rem;   /* ⬅ decrease as needed */
+    
 }
+
 
 /* Grid overlay */
 .gridOverlay {
@@ -517,7 +519,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1.5rem 2rem;
+    padding: 1.2rem 2rem;
     border-radius: 999px;
     font-size: 1.125rem;
     font-weight: 600;
