@@ -5,8 +5,126 @@
     width: 100%;
     background: #000000;
     overflow: hidden;
-    padding: 8rem 0;
+    /* padding: 8rem 0; */
 }
+
+
+/* Hero Image Container */
+.imageContainer {
+    width: 100%;
+    height: auto;
+    max-width: screen;
+    margin: 0 auto 4rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.parawords {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  /* Fluid font size: min 1.8rem, ideal 4rem, max 5rem */
+  font-size: clamp(1.8rem, 4vw, 5rem);
+  white-space: nowrap; /* Only on larger screens */
+  width: 100%;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.highlight2 {
+  color: #16a34a;
+}
+
+/* SUBHEADING */
+.parawords1 {
+  display: block;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: white;
+  z-index: 3;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Allow wrapping on smaller screens */
+@media (max-width: 900px) {
+  .parawords {
+    white-space: normal;
+    top: 45%; /* Slightly higher to avoid bottom overflow */
+  }
+}
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+  .parawords {
+    top: 42%;
+    line-height: 1.2;
+  }
+
+  .parawords1 {
+    margin-top: 0.8rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .parawords {
+    top: 40%;
+    padding: 0 1rem;
+    font-size: clamp(1.5rem, 10vw, 2.5rem);
+  }
+
+  .parawords1 {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    padding: 0 1rem;
+  }
+}
+
+
+
+
+/* Hero Image Styling */
+.heroImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    background-image: repeat;
+    aspect-ratio: 16/7; /* ~2.66 — good for banners */
+    filter: brightness(0.9) contrast(1.1);
+    transition: transform 0.5s ease;
+}
+
+/* .imageContainer:hover .heroImage {
+    transform: scale(1.02);
+} */
+ .imageshade
+ {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+
+ }
+
 
 .section::before {
     content: '';
@@ -354,8 +472,11 @@
 }
 
 @media (max-width: 768px) {
-    .section {
-        padding: 6rem 0;
+
+
+    .heroImage
+    {
+        aspect-ratio: 4 / 3; /* More square on smaller screens */
     }
 
     .container {
@@ -399,6 +520,10 @@
 @media (max-width: 480px) {
     .formContainer {
         padding: 1.5rem;
+    }
+     .heroImage
+    {
+        aspect-ratio: 4 / 3; /* More square on smaller screens */
     }
 
     .submitButton {
