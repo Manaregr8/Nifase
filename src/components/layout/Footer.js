@@ -229,8 +229,8 @@ const Footer = () => {
               <Image
                 src="/NIFASE_Logo-removebg-preview.png"
                 alt="NIFASE Logo"
-                width={120}
-                height={120}
+                width={10}
+                height={10}
                 className={styles.logo}
                 priority={true}
               />

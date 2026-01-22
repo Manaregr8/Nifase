@@ -1,6 +1,6 @@
 /* Fixed Footer Reveal Layout
-	 - Footer is fixed at viewport bottom with low z-index
-	 - Main content sits above it and reserves space via margin-bottom == footer height
+   - Footer is fixed at viewport bottom with low z-index
+   - Main content sits above it and reserves space via margin-bottom == footer height
 */
 
 .revealRoot {
@@ -53,9 +53,67 @@
 /* Schbang-style layout */
 .top {
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 	justify-content: space-between;
-	gap: 2.5rem;
+	gap: 3rem;
+}
+
+.leftColumn {
+	flex: 1;
+	min-width: 0;
+}
+
+.linksColumns {
+	display: flex;
+	gap: 4rem;
+	flex-shrink: 0;
+}
+
+.linkColumn {
+	min-width: 0;
+}
+
+.columnTitle {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: hsl(var(--foreground));
+	margin-bottom: 1.25rem;
+	margin-top: 0;
+}
+
+.gmail {
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: color 0.2s;
+	margin-bottom: 1rem;  
+	display: inline-block; /* Ensures margins apply properly */
+}
+.phn {
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: color 0.2s;
+	margin-top: 1rem;
+	margin-bottom: 1rem;  
+	display: inline-block; /* Ensures margins apply properly */
+}
+
+.columnLinks {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.columnLink {
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: color 0.2s;
+}
+
+.columnLink:hover {
+	color: hsl(var(--foreground));
 }
 
 .brandBlock {
@@ -103,9 +161,10 @@
 	letter-spacing: -0.06em;
 	line-height: 0.82;
 	color: hsl(var(--foreground));
-	font-size: clamp(5rem, 18vw, 15rem);
+	font-size: clamp(5rem, 7vw, 15rem);
 	white-space: nowrap;
 	overflow: hidden;
+	bottom: 30%;
 }
 
 .subwordmark {
@@ -161,6 +220,80 @@
 	font-weight: 500;
 }
 
+/* Contact column styles */
+.emptyColumn {
+	min-width: 0;
+	max-width: 300px;
+	flex-shrink: 0;
+}
+
+.contactItem {
+	margin-bottom: 1rem;
+}
+
+.contactItem:last-child {
+	margin-bottom: 0;
+}
+
+.contactLabel {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: hsl(var(--foreground));
+	margin-bottom: 0.35rem;
+}
+
+.addresstext {
+	margin: 0;
+	font-size: 0.95rem;               /* Match .columnLink */
+	line-height: 1.5;
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;            /* Remove underline by default */
+	transition: color 0.2s;           /* Smooth transition like .columnLink */
+	word-wrap: break-word;
+	display: inline-block;            /* Required for hover underline to work */
+}
+
+.addresstext:hover {
+	color: hsl(var(--foreground));
+	text-decoration: underline;       /* Match hover style */
+}
+
+.contactText {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	color: hsl(var(--muted-foreground));
+}
+
+.contactLink {
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	font-size: 0.9rem;
+	transition: color 0.2s;
+	display: inline-block;
+}
+
+.contactLink:hover {
+	color: hsl(var(--foreground));
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.linksColumns {
+		flex-direction: column;
+		gap: 2rem;
+	}
+	
+	.emptyColumn {
+		max-width: none;
+		width: 100%;
+	}
+	
+	.contactItem {
+		margin-bottom: 1.25rem;
+	}
+}
+
 .note {
 	text-align: right;
 	color: hsl(var(--foreground));
@@ -213,4 +346,3 @@
 		white-space: normal;
 	}
 }
-
