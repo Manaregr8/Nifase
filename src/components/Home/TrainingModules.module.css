@@ -158,6 +158,8 @@
   width: 45px;
   height: 45px;
   position: relative;
+   justify-content: center;
+  align-items: center;
   z-index: 2;
   filter: brightness(0) invert(1);
 }

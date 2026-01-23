@@ -200,7 +200,7 @@ export default function GallerySection() {
 
             <a
               className={styles.socialLink}
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/nifase.official?igsh=ZTJkb2R1aHZ3b3Vn"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
