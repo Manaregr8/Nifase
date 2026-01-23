@@ -23,7 +23,7 @@ export default function TrainingModules() {
     },
     {
       title: "Scalping Training",
-      description: "Learn Scalping Training with DICC Institute, Learn to trade quickly with us.",
+      description: "Learn Scalping Training with Nifase Institute, Learn to trade quickly with us.",
       icon: "https://cdn-icons-png.flaticon.com/128/2920/2920349.png",
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
     },
@@ -35,7 +35,7 @@ export default function TrainingModules() {
     },
     {
       title: "Intraday Training",
-      description: "Intraday Training by DICC will make you perfect. Get practical training.",
+      description: "Intraday Training by Nifase will make you perfect. Get practical training.",
       icon: "https://cdn-icons-png.flaticon.com/128/1705/1705312.png",
       gradient: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)"
     }
