@@ -402,3 +402,14 @@
     width: 100%;
   }
 }
+
+@media (max-width: 640px) {
+  .popularBadge {
+    top: 0.75rem;
+    right: -1.8rem;
+    left: auto;
+    padding: 0.35rem 2rem;
+    font-size: 0.7rem;
+    transform: rotate(45deg);
+  }
+}
