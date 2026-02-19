@@ -45,6 +45,8 @@ export default function CoursePopupForm({
   };
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -73,6 +75,8 @@ export default function CoursePopupForm({
     if (!open) return;
 
     setSubmitted(false);
+    setSubmitting(false);
+    setSubmitError("");
     setCourseOpen(false);
     resetForm();
 
@@ -116,7 +120,7 @@ export default function CoursePopupForm({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const email = String(formData.email ?? "").trim();
@@ -129,17 +133,47 @@ export default function CoursePopupForm({
     if (!phoneOk) return;
     if (!formData.course) return;
 
-    setSubmitted(true);
-    // No backend wired in this repo yet — keeping it functional for now.
-    // You can connect this to an API route later.
-    console.log("Course enquiry submitted:", formData);
+    try {
+      setSubmitting(true);
+      setSubmitError("");
 
-    // Clear fields for the next open
-    resetForm();
+      const selected = courseOptions.find((c) => c.value === formData.course) ?? null;
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          form: "course-popup",
+          name: formData.name.trim(),
+          phone: phone,
+          phoneRaw: formData.phone,
+          email,
+          course: formData.course,
+          subject: selected?.label || contextTitle || "Course Enquiry",
+          message: formData.message,
+          contextTitle: contextTitle || "",
+          defaultCourseSlug: defaultCourseSlug || "",
+          pageUrl: window.location.href,
+        }),
+      });
 
-    window.setTimeout(() => {
-      onClose?.();
-    }, 2000);
+      const result = await response.json().catch(() => ({ ok: false }));
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || "Submission failed");
+      }
+
+      setSubmitted(true);
+      resetForm();
+
+      window.setTimeout(() => {
+        onClose?.();
+      }, 2000);
+    } catch (error) {
+      setSubmitError(error?.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const selectedCourse = courseOptions.find((c) => c.value === formData.course) ?? null;
@@ -336,10 +370,16 @@ export default function CoursePopupForm({
               <button type="button" className={styles.secondaryBtn} onClick={onClose}>
                 Cancel
               </button>
-              <button type="submit" className={styles.primaryBtn} disabled={!canSubmit}>
-                Submit
+              <button type="submit" className={styles.primaryBtn} disabled={!canSubmit || submitting}>
+                {submitting ? "Submitting..." : "Submit"}
               </button>
             </div>
+
+            {submitError ? (
+              <p role="alert" className={styles.errorMessage}>
+                {submitError}
+              </p>
+            ) : null}
           </form>
         )}
       </div>

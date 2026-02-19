@@ -233,6 +233,13 @@
   padding-top: 1rem;
 }
 
+.errorMessage {
+  margin-top: 0.85rem;
+  color: hsl(var(--destructive));
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .primaryBtn,
 .secondaryBtn {
   border-radius: 0.9rem;
