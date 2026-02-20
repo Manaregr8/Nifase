@@ -115,9 +115,9 @@ const HomeSection4 = () => {
             <b>Instant Query Resolution & Expert Assistance:</b> From solving all your queries to answering any questions related to the markets, trading, and investments, we're there with you through thick and thin.
           </p>
           <div className={styles.buttonGroup}>
-            <button className={styles.joinButton}>
+            <a className={styles.joinButton} href="#lead">
               Book Your 1:1 Consultation Now
-            </button>
+            </a>
           </div>
         </div>
 

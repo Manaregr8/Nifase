@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import courses from "@/data/courses.json";
 import styles from "./coursePopupForm.module.css";
 
@@ -45,6 +46,12 @@ export default function CoursePopupForm({
   };
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -105,7 +112,7 @@ export default function CoursePopupForm({
     return () => document.removeEventListener("mousedown", onDocMouseDown);
   }, [courseOpen]);
 
-  if (!open) return null;
+  if (!open || !mounted) return null;
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) onClose?.();
@@ -116,37 +123,104 @@ export default function CoursePopupForm({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (submitting) return;
+
     const email = String(formData.email ?? "").trim();
-    const phone = String(formData.phone ?? "").trim();
+    const phoneRaw = String(formData.phone ?? "").trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    const normalizePhone = (value) => {
+      const digits = String(value ?? "").replace(/\D/g, "");
+      if (digits.length === 10) return digits;
+      // Common India formats: +91XXXXXXXXXX, 91XXXXXXXXXX
+      if (digits.length === 12 && digits.startsWith("91")) return digits.slice(2);
+      // 0XXXXXXXXXX (leading zero)
+      if (digits.length === 11 && digits.startsWith("0")) return digits.slice(1);
+      return digits;
+    };
+
+    const phone = normalizePhone(phoneRaw);
     const phoneOk = /^\d{10}$/.test(phone);
 
-    if (!formData.name.trim()) return;
-    if (!emailOk) return;
-    if (!phoneOk) return;
-    if (!formData.course) return;
+    if (!formData.name.trim()) {
+      window.alert("Please enter your name.");
+      firstFieldRef.current?.focus();
+      return;
+    }
+    if (!emailOk) {
+      window.alert("Please enter a valid email address.");
+      document.getElementById("lead-email")?.focus();
+      return;
+    }
+    if (!phoneOk) {
+      window.alert("Please enter a valid 10-digit phone number (you can also type +91). ");
+      document.getElementById("lead-phone")?.focus();
+      return;
+    }
+    if (!formData.course) {
+      window.alert("Please select a course.");
+      setCourseOpen(true);
+      return;
+    }
 
-    setSubmitted(true);
-    // No backend wired in this repo yet — keeping it functional for now.
-    // You can connect this to an API route later.
-    console.log("Course enquiry submitted:", formData);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          form: "course-popup",
+          name: formData.name,
+          phone,
+          phoneRaw,
+          email: formData.email,
+          course: formData.course,
+          message: formData.message,
+          contextTitle: contextTitle || "",
+          defaultCourseSlug: defaultCourseSlug || "",
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
 
-    // Clear fields for the next open
-    resetForm();
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        console.error("Lead submission failed", err);
+        window.alert(err?.error || "Unable to submit right now. Please try again.");
+        return;
+      }
 
-    window.setTimeout(() => {
-      onClose?.();
-    }, 2000);
+      setSubmitted(true);
+
+      // Clear fields for the next open
+      resetForm();
+
+      window.setTimeout(() => {
+        onClose?.();
+      }, 2000);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const selectedCourse = courseOptions.find((c) => c.value === formData.course) ?? null;
   const email = String(formData.email ?? "").trim();
-  const phone = String(formData.phone ?? "").trim();
+  const phoneRaw = String(formData.phone ?? "").trim();
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const phoneOk = /^\d{10}$/.test(phone);
+  const phone = phoneRaw.replace(/\D/g, "");
+  const phoneNormalized =
+    phone.length === 10
+      ? phone
+      : phone.length === 12 && phone.startsWith("91")
+        ? phone.slice(2)
+        : phone.length === 11 && phone.startsWith("0")
+          ? phone.slice(1)
+          : phone;
+  const phoneOk = /^\d{10}$/.test(phoneNormalized);
   const canSubmit =
     Boolean(formData.name.trim()) &&
     emailOk &&
@@ -163,7 +237,7 @@ export default function CoursePopupForm({
 
   const shouldShowCourseField = !hideCourseSelect || !formData.course;
 
-  return (
+  return createPortal(
     <div className={styles.overlay} onMouseDown={handleOverlayClick}>
       <div
         ref={dialogRef}
@@ -193,7 +267,7 @@ export default function CoursePopupForm({
             <div className={styles.successMessage}>Thank you! We will connect you soon.</div>
           </div>
         ) : (
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={handleSubmit} aria-busy={submitting}>
             <div className={styles.grid}>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="lead-name">
@@ -222,12 +296,12 @@ export default function CoursePopupForm({
                   value={formData.phone}
                   onChange={handleChange}
                   className={styles.input}
-                  placeholder="10-digit number"
+                  placeholder="Phone (e.g. 9876543210 or +91 9876543210)"
+                  type="tel"
                   inputMode="tel"
-                  pattern="\\d{10}"
-                  minLength={10}
-                  maxLength={10}
-                  title="Enter a valid 10-digit phone number"
+                  autoComplete="tel"
+                  maxLength={18}
+                  title="Enter a valid phone number"
                   required
                 />
               </div>
@@ -336,13 +410,14 @@ export default function CoursePopupForm({
               <button type="button" className={styles.secondaryBtn} onClick={onClose}>
                 Cancel
               </button>
-              <button type="submit" className={styles.primaryBtn} disabled={!canSubmit}>
+              <button type="submit" className={styles.primaryBtn} disabled={!canSubmit || submitting}>
                 Submit
               </button>
             </div>
           </form>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

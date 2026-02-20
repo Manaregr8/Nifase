@@ -118,6 +118,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Consistent vertical rhythm for the homepage sections (no Tailwind required) */
+.home-stack > * + * {
+  margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .home-stack > * + * {
+    margin-top: 5rem;
+  }
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "@/components/Home/homeSection3.module.css";
@@ -174,7 +175,9 @@ const HeroSection3 = () => {
           </div>
 
           <div ref={fxRightRef} className={styles.fxRight}>
-            <button className={styles.fxPillBtn}>What is NIFASE?</button>
+            <Link className={styles.fxPillBtn} href="/about">
+              What is NIFASE?
+            </Link>
 
             <h3 className={styles.fxRightTitle}>
               Master NSE Trading

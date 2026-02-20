@@ -12,6 +12,8 @@ const ContactSection1 = () => {
   const formRef = useRef(null);
   const infoCardsRef = useRef([]);
 
+  const [submitting, setSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,10 +26,40 @@ const ContactSection1 = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add your form submission logic here
+
+    if (submitting) return;
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          form: "contact-us",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        console.error("Contact form submission failed", err);
+        window.alert(err?.error || "Unable to send message right now. Please try again.");
+        return;
+      }
+
+      window.alert("Message sent. We'll get back to you soon.");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -269,7 +301,7 @@ const ContactSection1 = () => {
         <div className={styles.grid}>
           {/* Contact Form */}
           <div ref={formRef} className={styles.formContainer}>
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form onSubmit={handleSubmit} className={styles.form} aria-busy={submitting}>
               <div className={styles.formGroup}>
                 <label htmlFor="name" className={styles.label}>
                   Your Name
@@ -334,7 +366,7 @@ const ContactSection1 = () => {
                 />
               </div>
 
-              <button type="submit" className={styles.submitButton}>
+              <button type="submit" className={styles.submitButton} disabled={submitting}>
                 <span>Send Message</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path

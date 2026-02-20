@@ -159,9 +159,9 @@ export default function GallerySection() {
             </div>
           </div>
 
-          <button className={styles.ctaButton}>
+          <a className={styles.ctaButton} href="#lead">
             Book Campus Tour
-          </button>
+          </a>
 
           <div className={styles.logoRow} aria-label="Social links">
             <a

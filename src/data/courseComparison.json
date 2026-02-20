@@ -1,0 +1,130 @@
+[
+  {
+    "track": "Beginner / Foundation Track",
+    "courses": [
+      {
+        "name": "Certificate in Stock Markets (CSM)",
+        "purpose": "Absolute beginners ke liye market foundation"
+      },
+      {
+        "name": "Capital Market Module",
+        "purpose": "Market structure & operations foundation"
+      },
+      {
+        "name": "Derivative Market Module",
+        "purpose": "Futures & options foundation (risk-aware)"
+      },
+      {
+        "name": "Mutual Fund Module",
+        "purpose": "Investment products foundation"
+      },
+      {
+        "name": "Currency Market Module",
+        "purpose": "Currency & forex market basics"
+      },
+      {
+        "name": "Commodity Market Module",
+        "purpose": "Commodity market foundation"
+      }
+    ]
+  },
+  {
+    "track": "Trader Track (Skill Based)",
+    "courses": [
+      {
+        "name": "Stock Market Course for Traders",
+        "purpose": "Beginner → intermediate trading"
+      },
+      {
+        "name": "Stock Market Course for Professional Traders",
+        "purpose": "Advanced execution & trading mindset"
+      },
+      {
+        "name": "Technical Course for Professional Traders",
+        "purpose": "Advanced technical & price behaviour"
+      },
+      {
+        "name": "Fundamental Course for Traders",
+        "purpose": "News, macro & sector based trading bias"
+      },
+      {
+        "name": "Option Strategies Course",
+        "purpose": "Professional options trading"
+      }
+    ]
+  },
+  {
+    "track": "Algo & Systematic Track",
+    "courses": [
+      {
+        "name": "Share Market Course for Algo Traders",
+        "purpose": "Market logic for system trading"
+      },
+      {
+        "name": "Algo Trading Course",
+        "purpose": "Rule-based & systematic trading"
+      }
+    ]
+  },
+  {
+    "track": "Dealer / Operations Track",
+    "courses": [
+      {
+        "name": "Equity Dealer Certification",
+        "purpose": "Dealer / terminal / operations job roles"
+      }
+    ]
+  },
+  {
+    "track": "Diploma – Career Track",
+    "courses": [
+      {
+        "name": "Diploma in Stock Market Professional",
+        "purpose": "6-month job & trader readiness"
+      },
+      {
+        "name": "Diploma in Financial Market Management (DFMM)",
+        "purpose": "Multi-asset + analysis + MF + derivatives"
+      },
+      {
+        "name": "Advanced Diploma in Financial Market Management (ADFMM)",
+        "purpose": "Full market + strategy + operations + advisory depth"
+      }
+    ]
+  },
+  {
+    "track": "Research & Analyst Track",
+    "courses": [
+      {
+        "name": "Equity Research Certification",
+        "purpose": "Entry level research & valuation"
+      },
+      {
+        "name": "Diploma in Research Analyst",
+        "purpose": "Professional research career program"
+      }
+    ]
+  },
+  {
+    "track": "Advisory & Portfolio Track",
+    "courses": [
+      {
+        "name": "Investment Advisory Module – XA Series",
+        "purpose": "Client advisory & compliance mindset"
+      },
+      {
+        "name": "Investment Analyst & Portfolio Management Program",
+        "purpose": "Analyst + portfolio construction"
+      }
+    ]
+  },
+  {
+    "track": "Flagship / All-in-One Track",
+    "courses": [
+      {
+        "name": "Advanced Diploma in Stock Market",
+        "purpose": "12-month full career program"
+      }
+    ]
+  }
+]

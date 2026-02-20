@@ -21,6 +21,7 @@ import NewgallerySection from "@/components/Home/newgallerySection";
 import TestimonialSection from "@/components/Home/testimonimals";
 import WhoCanLearn from "@/components/Home/whocanlearn";
 import CoursesSection from "@/components/Home/CoursesSection";
+import CourseComparisonSection from "@/components/Home/CourseComparisonSection";
 import BookMeeting from "@/components/BookMeeting";
 import CompanyCarouselSection from "@/components/Home/CompanyCarouselSection";
 import WhyJoinSection from "@/components/Home/WhyJoinSection";
@@ -42,7 +43,7 @@ export default function Home() {
           filter: loading ? "blur(2px)" : "none",
           pointerEvents: loading ? "none" : "auto",
         }}
-        className="space-y-16" // or space-y-20, space-y-24 — adjust as needed
+        className="home-stack"
       >
         <HomeSection1 />
         <CompanyCarouselSection />
@@ -53,6 +54,7 @@ export default function Home() {
         <NewgallerySection />
         <TestimonialSection />
         <CoursesSection />
+        <CourseComparisonSection />
         <WhoCanLearn />
         <HomeSection3 />
         <HomeSection4 />

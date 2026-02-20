@@ -1,0 +1,115 @@
+.section {
+  width: 100%;
+}
+
+.inner {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-weight: 900;
+  color: hsl(var(--foreground));
+}
+
+.subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 52rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+}
+
+.tableCard {
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border) / 0.8);
+  background:
+    radial-gradient(circle at 20% -20%, hsl(var(--primary) / 0.18), transparent 55%),
+    radial-gradient(circle at 110% 10%, hsl(var(--accent) / 0.12), transparent 55%),
+    hsl(var(--card) / 0.85);
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.12),
+    0 25px 80px hsl(var(--background) / 0.55);
+  overflow: hidden;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 20px;
+  border-bottom: 1px solid hsl(var(--border) / 0.7);
+  vertical-align: top;
+}
+
+.table thead th {
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: hsl(var(--foreground));
+  background:
+    linear-gradient(135deg, hsl(var(--background) / 0.55), hsl(var(--card) / 0.88));
+  border-bottom: 1px solid hsl(var(--border) / 0.9);
+}
+
+.table thead th:first-child {
+  box-shadow: inset 3px 0 0 hsl(var(--accent) / 0.85);
+}
+
+.table tbody tr:nth-child(even) td,
+.table tbody tr:nth-child(even) th {
+  background: hsl(var(--background) / 0.1);
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+  background: hsl(var(--primary) / 0.08);
+}
+
+.trackCell {
+  width: 22rem;
+  font-weight: 900;
+  color: hsl(var(--foreground));
+  background:
+    linear-gradient(180deg, hsl(var(--primary) / 0.14), hsl(var(--background) / 0.08));
+  box-shadow:
+    inset 4px 0 0 hsl(var(--primary) / 0.75),
+    inset 0 0 0 1px hsl(var(--primary) / 0.08);
+}
+
+.nameCell {
+  width: 26rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+}
+
+.purposeCell {
+  color: hsl(var(--muted-foreground));
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    width: calc(100% - 1.25rem);
+  }
+
+  .header {
+    text-align: left;
+  }
+}

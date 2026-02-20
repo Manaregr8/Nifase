@@ -67,6 +67,22 @@ const TypewriterText = () => {
 const HomeSection1 = ({ user }) => {
   const [leadOpen, setLeadOpen] = useState(false);
 
+  useEffect(() => {
+    const maybeOpenLead = () => {
+      if (typeof window === "undefined") return;
+      if (window.location.hash !== "#lead") return;
+      setLeadOpen(true);
+
+      // Clear the hash so refresh/back doesn't keep re-opening the modal.
+      const nextUrl = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, "", nextUrl);
+    };
+
+    maybeOpenLead();
+    window.addEventListener("hashchange", maybeOpenLead);
+    return () => window.removeEventListener("hashchange", maybeOpenLead);
+  }, []);
+
   return (
     <section className={styles.section}>
       <div className={`${styles.gridOverlay} grid-overlay`} aria-hidden="true" />

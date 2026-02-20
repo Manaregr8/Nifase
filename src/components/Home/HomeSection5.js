@@ -182,7 +182,7 @@ const HomeSection5 = () => {
                 <span className={styles.cardValue}>₹ 20,000</span>
                 <span className={styles.cardCaption}>Virtual capital size</span>
               </div>
-              <button className={styles.cardButton}>Start program</button>
+              <a className={styles.cardButton} href="#lead">Start program</a>
             </div>
           </div>
         </div>

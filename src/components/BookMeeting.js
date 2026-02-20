@@ -2,7 +2,7 @@ import styles from "./bookmeeting.module.css";
 
 export default function BookMeeting() {
   return (
-    <section className={styles.section}>
+    <section id="book-meeting" className={styles.section}>
       <div className={styles.container}>
         {/* LEFT INFO */}
         <div className={styles.info}>

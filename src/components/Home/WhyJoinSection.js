@@ -98,10 +98,10 @@ export default function WhyJoinSection() {
               <p className={styles.ctaTitle}>Ready to Begin Your Trading Journey?</p>
               <p className={styles.ctaSubtext}>Join thousands of successful traders who started with NIFASE</p>
             </div>
-            <button className={styles.ctaBtn}>
+            <a className={styles.ctaBtn} href="#lead">
               Enroll Now
               <span className={styles.btnArrow}>→</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
