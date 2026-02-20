@@ -80,6 +80,8 @@ export default function CoursePopupForm({
     if (!open) return;
 
     setSubmitted(false);
+    setSubmitting(false);
+    setSubmitError("");
     setCourseOpen(false);
     resetForm();
 
@@ -123,6 +125,7 @@ export default function CoursePopupForm({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = async (e) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -414,6 +417,12 @@ export default function CoursePopupForm({
                 Submit
               </button>
             </div>
+
+            {submitError ? (
+              <p role="alert" className={styles.errorMessage}>
+                {submitError}
+              </p>
+            ) : null}
           </form>
         )}
       </div>
