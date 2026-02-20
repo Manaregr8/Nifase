@@ -47,6 +47,7 @@ export default function CoursePopupForm({
 
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -126,8 +127,9 @@ export default function CoursePopupForm({
   };
 
   const handleSubmit = async (e) => {
-  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setSubmitError("");
 
     if (submitting) return;
 
@@ -193,7 +195,7 @@ export default function CoursePopupForm({
       if (!res.ok) {
         const err = await res.json().catch(() => null);
         console.error("Lead submission failed", err);
-        window.alert(err?.error || "Unable to submit right now. Please try again.");
+        setSubmitError(err?.error || "Unable to submit right now. Please try again.");
         return;
       }
 
@@ -205,6 +207,9 @@ export default function CoursePopupForm({
       window.setTimeout(() => {
         onClose?.();
       }, 2000);
+    } catch (err) {
+      console.error("Lead submission failed", err);
+      setSubmitError("Unable to submit right now. Please try again.");
     } finally {
       setSubmitting(false);
     }
