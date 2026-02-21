@@ -134,7 +134,7 @@ export default function TeamSection() {
           ))}
         </div>
 
-        {/* FEATURES LIST */}
+        {/* FEATURES LIST
         <div className={styles.features}>
           <ul className={styles.points}>
             <li>
@@ -150,7 +150,7 @@ export default function TeamSection() {
               build your own trading plan.
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </section>
   );
