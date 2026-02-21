@@ -203,7 +203,7 @@ export default function FixedFooterReveal({ children }) {
               <h3 className={styles.columnTitle}>Contact us</h3>
               <p className={styles.addresstext}>
                 Savitri Cinema Complex, Block E, Greater Kailash II, Greater
-                Kailash, New Delhi, Delhi 110080
+                Kailash, New Delhi, Delhi 110048
               </p>
               <a href="tel:+918743912102" className={styles.phn}>
                 +91 8743912102

@@ -459,7 +459,7 @@ const ContactSection1 = () => {
                 Savitri Cinema Complex, Block E, Greater Kailash II, Greater
                 Kailash
               </p>
-              <p className={styles.infoText}> New Delhi, Delhi 110080</p>
+              <p className={styles.infoText}> New Delhi, Delhi 110048</p>
             </a>
 
             {/* Social Card */}

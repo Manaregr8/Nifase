@@ -16,7 +16,6 @@ const AboutSection2 = () => {
     const section = sectionRef.current;
 
     const ctx = gsap.context(() => {
-      // Section title – fade up once
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: section,
@@ -29,7 +28,6 @@ const AboutSection2 = () => {
         ease: "power3.out",
       });
 
-      // Cards – alternate slide direction, no scrub
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
         gsap.from(card, {
@@ -51,19 +49,19 @@ const AboutSection2 = () => {
 
   const items = [
     {
-      tag: "Step 01",
-      title: "Learn rules that protect capital",
-      text: "Structured modules show you how professional risk limits work, so every trade has a defined plan — not a guess.",
+      tag: "The Problem",
+      title: "Traders fail structurally, not strategically",
+      text: "Most traders lose not because their strategy is wrong — but because of poor risk control, emotional decision-making, and zero performance measurement. Strategy without structure is just speculation.",
     },
     {
-      tag: "Step 02",
-      title: "Train on real market conditions",
-      text: "Simulated evaluations mirror live volatility, spreads, and drawdown, so your edge survives outside backtests.",
+      tag: "Our Purpose",
+      title: "Institutionalizing trading education in India",
+      text: "NIFASE exists to replace speculation with systems, hype with discipline, and randomness with risk-defined execution. We bring institutional-grade standards to every trader, at every level.",
     },
     {
-      tag: "Step 03",
-      title: "Scale into funded payouts",
-      text: "Hit the targets, unlock bigger accounts, and withdraw consistently while NIFASE handles the capital side.",
+      tag: "Our Method",
+      title: "Systems, discipline, and measurable results",
+      text: "We don't teach tips or shortcuts. We build traders who operate within defined frameworks — with clear rules, evaluation benchmarks, and capital preservation at the core of every decision.",
     },
   ];
 
@@ -74,9 +72,10 @@ const AboutSection2 = () => {
 
       <div className={styles.inner}>
         <div className={styles.header}>
-          <p className={styles.kicker}>How it works</p>
+          <p className={styles.kicker}>Our Mission</p>
           <h2 ref={titleRef} className={styles.title}>
-            From first session<span className={styles.titleAccent}> to first payout.</span>
+            Built to fix what trading education{" "}
+            <span className={styles.titleAccent}>gets wrong.</span>
           </h2>
         </div>
 
