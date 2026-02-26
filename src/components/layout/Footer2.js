@@ -137,6 +137,9 @@ export default function FixedFooterReveal({ children }) {
                   <Link className={styles.columnLink} href="/privacy">
                     Privacy Policy
                   </Link>
+                    <Link className={styles.columnLink} href="/disclaimer">
+                   Disclaimer
+                  </Link>
                 </nav>
               </div>
 
