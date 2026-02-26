@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Head from "next/head";
-import Link from "next/link";
 
 const sections = [
   {
@@ -73,13 +72,11 @@ export default function DisclaimerPage() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
-
     sectionRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
@@ -88,166 +85,145 @@ export default function DisclaimerPage() {
       <Head>
         <title>Disclaimer — Nifase</title>
         <meta name="description" content="Disclaimer for nifase.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <style>{`
         :root {
-          --bg: #080808;
-          --surface: #111111;
-          --border: #1e1e1e;
-          --accent: #c8a96e;
-          --accent-dim: rgba(200,169,110,0.12);
-          --text: #e8e2d9;
-          --muted: #666;
-          --faint: #1c1c1c;
+          --bg: #050505;
+          --card: #0d0d0d;
+          --border: #1a1a1a;
+          --border2: #222222;
+          --green: #3ddc64;
+          --green-dim: rgba(61,220,100,0.07);
+          --green-border: rgba(61,220,100,0.18);
+          --text: #ffffff;
+          --text2: #a0a0a0;
+          --muted: #4a4a4a;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
+        .disclaimer-page {
           background: var(--bg);
           color: var(--text);
-          font-family: 'DM Sans', sans-serif;
-          font-weight: 300;
+          font-family: 'Inter', sans-serif;
           min-height: 100vh;
           overflow-x: hidden;
         }
 
-        .grain {
-          position: fixed;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-          pointer-events: none;
-          z-index: 999;
-          opacity: 0.4;
-        }
-
-        .header {
-          border-bottom: 1px solid var(--border);
-          padding: 1.5rem 4rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          position: sticky;
-          top: 0;
-          background: rgba(8,8,8,0.92);
-          backdrop-filter: blur(12px);
-          z-index: 100;
-          animation: fadeDown 0.6s ease both;
-        }
-
-        .logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.35rem;
-          letter-spacing: 0.12em;
-          color: var(--text);
-          text-decoration: none;
-          text-transform: uppercase;
-        }
-
-        .logo-accent { color: var(--accent); }
-
-        .nav-link {
-          font-size: 0.8rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--muted);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-
-        .nav-link:hover { color: var(--accent); }
-
+        /* HERO */
         .hero {
-          padding: 7rem 4rem 4rem;
-          max-width: 900px;
-          animation: fadeUp 0.8s 0.2s ease both;
+          padding: 6rem 5rem 4.5rem;
+          max-width: 1080px;
+          animation: fadeUp 0.7s 0.1s ease both;
+          position: relative;
+          overflow: hidden;
         }
 
-        .label {
-          font-size: 0.72rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: var(--accent);
-          margin-bottom: 1.5rem;
-          display: flex;
+        .hero-glow {
+          position: absolute;
+          top: -60px; right: -100px;
+          width: 600px; height: 500px;
+          background: radial-gradient(ellipse, rgba(61,220,100,0.05) 0%, transparent 65%);
+          pointer-events: none;
+        }
+
+        .badge {
+          display: inline-flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
+          background: var(--green-dim);
+          border: 1px solid var(--green-border);
+          border-radius: 100px;
+          padding: 0.3rem 0.9rem;
+          font-size: 0.68rem;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--green);
+          margin-bottom: 1.75rem;
         }
 
-        .label::before {
-          content: '';
-          display: block;
-          width: 2rem;
-          height: 1px;
-          background: var(--accent);
+        .badge-dot {
+          width: 5px; height: 5px;
+          background: var(--green);
+          border-radius: 50%;
+          animation: pulse 2s ease-in-out infinite;
         }
 
-        h1 {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.8rem, 6vw, 5rem);
+        .hero-title {
+          font-size: clamp(3.2rem, 7.5vw, 6rem);
+          font-weight: 900;
+          line-height: 0.92;
+          letter-spacing: -0.04em;
+          margin-bottom: 1.75rem;
+        }
+
+        .hero-title .white { color: var(--text); }
+        .hero-title .green { color: var(--green); }
+
+        .hero-desc {
+          font-size: 1rem;
           font-weight: 400;
-          line-height: 1.05;
-          color: var(--text);
-          margin-bottom: 1.5rem;
-        }
-
-        h1 em {
-          font-style: italic;
-          color: var(--accent);
+          color: var(--text2);
+          line-height: 1.75;
+          max-width: 520px;
+          margin-bottom: 3rem;
         }
 
         .hero-meta {
-          font-size: 0.8rem;
-          letter-spacing: 0.06em;
-          color: var(--muted);
-          padding-top: 1.5rem;
-          border-top: 1px solid var(--border);
           display: flex;
-          gap: 2.5rem;
-          flex-wrap: wrap;
+          align-items: stretch;
+          border: 1px solid var(--border2);
+          border-radius: 12px;
+          overflow: hidden;
+          width: fit-content;
+          background: var(--card);
         }
 
         .meta-item {
+          padding: 0.9rem 1.75rem;
+          border-right: 1px solid var(--border2);
           display: flex;
           flex-direction: column;
-          gap: 0.3rem;
+          gap: 0.2rem;
         }
+        .meta-item:last-child { border-right: none; }
 
         .meta-label {
-          color: var(--text);
-          font-weight: 500;
-          font-size: 0.85rem;
+          font-size: 0.62rem;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--muted);
         }
 
+        .meta-value {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--text);
+        }
+
+        /* DIVIDER */
         .divider {
           height: 1px;
-          background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
-          margin: 0 4rem;
+          background: linear-gradient(90deg, transparent, var(--border2) 12%, var(--border2) 88%, transparent);
+          margin: 0 5rem;
         }
 
+        /* CONTENT */
         .content {
-          max-width: 900px;
-          padding: 4rem 4rem 8rem;
-          animation: fadeUp 0.8s 0.4s ease both;
+          max-width: 1080px;
+          padding: 4.5rem 5rem 8rem;
         }
 
         .section {
-          margin-bottom: 0;
           display: grid;
-          grid-template-columns: 220px 1fr;
-          gap: 3rem;
-          align-items: start;
-          padding-bottom: 3.5rem;
-          margin-bottom: 3.5rem;
+          grid-template-columns: 56px 1fr;
+          gap: 0 2.5rem;
+          padding: 2.75rem 0;
           border-bottom: 1px solid var(--border);
           opacity: 0;
-          transform: translateY(24px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
+          transform: translateY(18px);
+          transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .section.visible {
@@ -255,181 +231,163 @@ export default function DisclaimerPage() {
           transform: translateY(0);
         }
 
-        .section:last-of-type { border-bottom: none; }
+        .section:last-child { border-bottom: none; }
 
-        .section-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 3.5rem;
-          font-weight: 400;
-          color: var(--faint);
-          line-height: 1;
-          user-select: none;
+        .section-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-top: 0.15rem;
         }
 
-        h2 {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.3rem;
-          font-weight: 400;
+        .section-num {
+          font-size: 0.65rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          color: var(--green);
+          background: var(--green-dim);
+          border: 1px solid var(--green-border);
+          border-radius: 6px;
+          padding: 0.25rem 0.5rem;
+          line-height: 1;
+        }
+
+        .section-title {
+          font-size: 1.15rem;
+          font-weight: 700;
           color: var(--text);
-          margin-bottom: 1rem;
-          letter-spacing: 0.02em;
+          margin-bottom: 0.85rem;
+          letter-spacing: -0.02em;
+          line-height: 1.3;
         }
 
         .body-text {
-          font-size: 0.95rem;
-          line-height: 1.85;
-          color: #999;
-          margin-bottom: 1rem;
+          font-size: 0.91rem;
+          line-height: 1.9;
+          color: var(--text2);
+          font-weight: 400;
+          margin-bottom: 0.8rem;
         }
-
         .body-text:last-child { margin-bottom: 0; }
 
         .highlight {
-          background: var(--accent-dim);
-          border-left: 2px solid var(--accent);
-          padding: 1.25rem 1.5rem;
-          margin: 1.5rem 0;
-          border-radius: 0 4px 4px 0;
+          background: var(--green-dim);
+          border: 1px solid var(--green-border);
+          border-left: 3px solid var(--green);
+          padding: 0.9rem 1.2rem;
+          margin: 1.1rem 0;
+          border-radius: 0 8px 8px 0;
         }
 
         .highlight p {
-          color: #bba97a;
-          font-size: 0.95rem;
-          line-height: 1.7;
+          font-size: 0.86rem;
+          font-weight: 600;
+          color: var(--green);
+          line-height: 1.65;
           margin: 0;
         }
 
         .inline-link {
-          color: var(--accent);
+          color: var(--green);
           text-decoration: none;
-          border-bottom: 1px solid rgba(200,169,110,0.3);
+          font-weight: 600;
+          border-bottom: 1px solid rgba(61,220,100,0.3);
           transition: border-color 0.2s;
         }
+        .inline-link:hover { border-color: var(--green); }
 
-        .inline-link:hover { border-color: var(--accent); }
-
-        .footer {
-          border-top: 1px solid var(--border);
-          padding: 2rem 4rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 0.78rem;
-          color: var(--muted);
-          letter-spacing: 0.05em;
-          flex-wrap: wrap;
-          gap: 1rem;
-        }
-
-        .footer-links {
-          display: flex;
-          gap: 1.2rem;
-          align-items: center;
-        }
-
-        .footer-link {
-          color: var(--muted);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-
-        .footer-link:hover { color: var(--accent); }
-
-        .footer-sep { color: var(--border); }
-
-        @keyframes fadeDown {
-          from { opacity: 0; transform: translateY(-12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* ANIMATIONS */
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.35; }
         }
 
-        @media (max-width: 680px) {
-          .header { padding: 1.2rem 1.5rem; }
-          .hero { padding: 4rem 1.5rem 3rem; }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+          .hero { padding: 3rem 1.5rem 2.5rem; }
           .divider { margin: 0 1.5rem; }
           .content { padding: 3rem 1.5rem 5rem; }
-          .section { grid-template-columns: 1fr; gap: 0.5rem; }
-          .section-num { font-size: 2rem; }
-          .footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+          .section { grid-template-columns: 1fr; gap: 0.6rem; }
+          .hero-meta { flex-direction: column; width: 100%; }
+          .meta-item { border-right: none; border-bottom: 1px solid var(--border2); }
+          .meta-item:last-child { border-bottom: none; }
         }
       `}</style>
 
-      <div className="grain" aria-hidden="true" />
+      <div className="disclaimer-page">
 
-      <header className="header">
-        <Link href="/" className="logo">
-          Nif<span className="logo-accent">a</span>se
-        </Link>
-        <Link href="/" className="nav-link">← Back to Home</Link>
-      </header>
-
-      <div className="hero">
-        <div className="label">Legal</div>
-        <h1>Dis<em>claimer</em></h1>
-        <div className="hero-meta">
-          <div className="meta-item">
-            <span className="meta-label">Nifase.com</span>
-            <span>Website Disclaimer</span>
+        {/* Hero */}
+        <div className="hero">
+          <div className="hero-glow" />
+          <div className="badge">
+            <div className="badge-dot" />
+            Legal Document
           </div>
-          <div className="meta-item">
-            <span className="meta-label">Effective</span>
-            <span>February 26, 2026</span>
-          </div>
-          <div className="meta-item">
-            <span className="meta-label">Jurisdiction</span>
-            <span>As Applicable</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="divider" />
-
-      <div className="content">
-        {sections.map((section, i) => (
-          <div
-            key={section.num}
-            className="section"
-            ref={(el) => (sectionRefs.current[i] = el)}
-          >
-            <div className="section-num">{section.num}</div>
-            <div>
-              <h2>{section.title}</h2>
-              {section.body.map((text, j) => (
-                <p key={j} className="body-text">{text}</p>
-              ))}
-              {section.highlight && (
-                <div className="highlight">
-                  <p>{section.highlight}</p>
-                </div>
-              )}
-              {section.contact && (
-                <p className="body-text">
-                  If you have questions about this disclaimer, you may reach us at{" "}
-                  <a href="mailto:legal@nifase.com" className="inline-link">
-                    legal@nifase.com
-                  </a>
-                  .
-                </p>
-              )}
+          <h1 className="hero-title">
+            <span className="white">Dis</span>
+            <span className="green">claimer</span>
+          </h1>
+          <p className="hero-desc">
+            Please read this disclaimer carefully before using nifase.com. By accessing our platform, you acknowledge and agree to the terms outlined below.
+          </p>
+          <div className="hero-meta">
+            <div className="meta-item">
+              <span className="meta-label">Website</span>
+              <span className="meta-value">nifase.com</span>
+            </div>
+            <div className="meta-item">
+              <span className="meta-label">Effective Date</span>
+              <span className="meta-value">February 26, 2026</span>
+            </div>
+            <div className="meta-item">
+              <span className="meta-label">Jurisdiction</span>
+              <span className="meta-value">As Applicable</span>
             </div>
           </div>
-        ))}
-      </div>
-
-      <footer className="footer">
-        <span>© {new Date().getFullYear()} Nifase.com — All rights reserved.</span>
-        <div className="footer-links">
-          <Link href="/privacy" className="footer-link">Privacy Policy</Link>
-          <span className="footer-sep">·</span>
-          <Link href="/terms" className="footer-link">Terms of Use</Link>
-          <span className="footer-sep">·</span>
-          <Link href="/contact" className="footer-link">Contact</Link>
         </div>
-      </footer>
+
+        <div className="divider" />
+
+        {/* Sections */}
+        <div className="content">
+          {sections.map((section, i) => (
+            <div
+              key={section.num}
+              className="section"
+              ref={(el) => (sectionRefs.current[i] = el)}
+              style={{ transitionDelay: `${i * 50}ms` }}
+            >
+              <div className="section-left">
+                <div className="section-num">{section.num}</div>
+              </div>
+              <div className="section-body">
+                <h2 className="section-title">{section.title}</h2>
+                {section.body.map((text, j) => (
+                  <p key={j} className="body-text">{text}</p>
+                ))}
+                {section.highlight && (
+                  <div className="highlight">
+                    <p>{section.highlight}</p>
+                  </div>
+                )}
+                {section.contact && (
+                  <p className="body-text">
+                    If you have questions about this disclaimer, you may reach us at{" "}
+                    <a href="mailto:legal@nifase.com" className="inline-link">
+                      legal@nifase.com
+                    </a>.
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
     </>
   );
 }
