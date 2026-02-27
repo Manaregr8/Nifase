@@ -378,7 +378,7 @@ export default function DisclaimerPage() {
                   <p className="body-text">
                     If you have questions about this disclaimer, you may reach us at{" "}
                     <a href="mailto:legal@nifase.com" className="inline-link">
-                      legal@nifase.com
+                     info@nifase.com
                     </a>.
                   </p>
                 )}
